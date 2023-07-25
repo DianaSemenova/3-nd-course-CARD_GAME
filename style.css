@@ -15,6 +15,15 @@ body {
   font-family: "StratosSkyeng", sans-serif;
 }
 
+.center {
+  padding-left: calc(50% - 250px);
+  padding-right: calc(50% - 250px);
+}
+
+.top {
+  padding-top: 158px;
+}
+
 .box-game {
   width: 480px;
   height: 459px;
