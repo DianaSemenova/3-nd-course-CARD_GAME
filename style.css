@@ -1,3 +1,9 @@
+@font-face {
+  font-family: "StratosSkyeng";
+  src: url("fonts/statosskyeng-v1.001/Web fonts/woff") format("woff");
+  font-style: normal;
+  font-weight: normal;
+}
 * {
   margin: 0;
   padding: 0;
@@ -6,6 +12,7 @@
 
 body {
   background: var(--blue-120, #004980);
+  font-family: "StratosSkyeng", sans-serif;
 }
 
 .box-game {
@@ -24,7 +31,6 @@ body {
   color: #004980;
   text-align: center;
   font-variant-numeric: lining-nums proportional-nums;
-  font-family: StratosSkyeng;
   font-size: 40px;
   font-style: normal;
   font-weight: 400;
@@ -37,7 +43,7 @@ body {
   color: #FFF;
   align-self: center;
   font-variant-numeric: lining-nums proportional-nums;
-  font-family: StratosSkyeng;
+  font-family: "StratosSkyeng";
   font-size: 24px;
   font-style: normal;
   font-weight: 400;
@@ -56,7 +62,7 @@ body {
   border: none;
   color: var(--blue-100, #0080C1);
   text-align: center;
-  font-family: StratosSkyeng;
+  font-family: "StratosSkyeng";
   font-size: 64px;
   font-style: normal;
   font-weight: 400;
