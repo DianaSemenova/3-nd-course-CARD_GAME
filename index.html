@@ -1,28 +1,38 @@
 <!DOCTYPE html>
 <html lang="ru">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CardGame</title>
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-    <div class="top center"> 
-        <div class="box-game">      
-            <h1 class="box-game__title">Выбери<br>сложность</h1>  
-            <div class="box-difficulty-level">
-                <!-- <label>
-               <input type="checkbox" value="6">
-            </label> -->
-    
-            <button value="6" class="box-difficulty-level__button">1</button>
-            <button value="12" class="box-difficulty-level__button">2</button>
-            <button value="18" class="box-difficulty-level__button">3</button>
-    
-            </div>
+    <div class="top center">
+        <div class="box-game">
+            <h1 class="box-game__title">Выбери<br>сложность</h1>
+
+
+            <form class="box-difficulty-level" action="#">
+
+                <input class="box-difficulty-level__radio" type="radio" id="radio1" name="radios" value="6">
+                <label class="box-difficulty-level__label" for="radio1">1</label>
+
+                <input class="box-difficulty-level__radio" type="radio" id="radio2" name="radios" value="12">
+                <label class="box-difficulty-level__label" for="radio2">2</label>
+
+                <input class="box-difficulty-level__radio" type="radio" id="radio3" name="radios" value="18">
+                <label class="box-difficulty-level__label" for="radio3">3</label>
+
+            </form>
+
             <button class="box-game__button">Старт</button>
-        </div>   
+        </div>
+
+
     </div>
-       
+
 </body>
+
 </html>
