@@ -10,11 +10,11 @@
 
 <body>
     <div class="top center">
-        <div class="box-game">
+        <form class="box-game" method="POST" action="#">
             <h1 class="box-game__title">Выбери<br>сложность</h1>
 
 
-            <form class="box-difficulty-level" action="#">
+            <div class="box-difficulty-level">
 
                 <input class="box-difficulty-level__radio" type="radio" id="radio1" name="radios" value="6">
                 <label class="box-difficulty-level__label" for="radio1">1</label>
@@ -25,10 +25,10 @@
                 <input class="box-difficulty-level__radio" type="radio" id="radio3" name="radios" value="18">
                 <label class="box-difficulty-level__label" for="radio3">3</label>
 
-            </form>
+            </div>
 
-            <button class="box-game__button">Старт</button>
-        </div>
+            <button class="box-game__button" type="submit">Старт</button>
+        </form>
 
 
     </div>
