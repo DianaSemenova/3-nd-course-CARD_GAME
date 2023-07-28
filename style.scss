@@ -91,6 +91,7 @@ body {
                 background-color: #004980;
                 border: 3px solid #004980;
                 color: #FFF;
+                transform: scale(1.2);
             }
 
         }
@@ -114,7 +115,8 @@ body {
 
             &:hover {
                 background-color: #c4e8f0;
-                border: 2px solid #004980;
+                border: 1px solid #004980;
+                transform: scale(1.1);
             }
         }
     }
