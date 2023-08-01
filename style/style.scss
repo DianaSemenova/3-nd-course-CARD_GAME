@@ -1,6 +1,6 @@
 @font-face {
     font-family: 'StratosSkyeng';
-    src: url("fonts/statosskyeng-v1.001/Web\ fonts/woff") format("woff");
+    src: url("/fonts/stratosskyengweb-regular.woff") format("woff");
     font-style: normal;
     font-weight: normal;
 }
@@ -127,3 +127,4 @@ body {
     }
 
 }
+ @import "card-game";

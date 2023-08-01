@@ -1,6 +1,6 @@
 @font-face {
   font-family: "StratosSkyeng";
-  src: url("fonts/statosskyeng-v1.001/Web fonts/woff") format("woff");
+  src: url("/fonts/stratosskyengweb-regular.woff") format("woff");
   font-style: normal;
   font-weight: normal;
 }
@@ -113,4 +113,40 @@ body {
   background-color: #c4e8f0;
   border: 1px solid #004980;
   transform: scale(1.1);
+}
+
+.game-cards {
+  padding: 22px;
+  display: flex;
+  flex-direction: column;
+}
+.game-cards-timer {
+  display: flex;
+  justify-content: space-between;
+}
+.game-cards-timer__init {
+  display: flex;
+  justify-content: flex-end;
+  gap: 57px;
+}
+.game-cards-timer__item {
+  color: #FFF;
+  font-variant-numeric: lining-nums proportional-nums;
+  font-family: StratosSkyeng;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 32px;
+}
+.game-cards-timer__time {
+  color: #FFF;
+  font-family: StratosSkyeng;
+  font-size: 64px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 72px;
+}
+.game-cards__suits {
+  padding: 48px;
+  text-align: center;
 }/*# sourceMappingURL=style.css.map */
