@@ -1,7 +1,7 @@
-import {renderLevelGame} from "./components/render_level_game.js"
+import { renderLevelGame } from "./components/render_level_game.js";
 
 function renderGameDifficulty() {
-    let appEl = document.getElementById('app');
+    let appEl = document.getElementById("app");
 
     const appHTML = `
     <div class="top center">
@@ -26,12 +26,11 @@ function renderGameDifficulty() {
 
     appEl.innerHTML = appHTML;
 
-
-    document.getElementById('form-level').addEventListener('submit', (e) => {
+    document.getElementById("form-level").addEventListener("submit", (e) => {
         e.preventDefault();
         console.log(e);
 
-        let levels = document.querySelectorAll('.box-difficulty-level__radio');
+        let levels = document.querySelectorAll(".box-difficulty-level__radio");
 
         for (const level of levels) {
             if (level.checked) {
@@ -40,7 +39,7 @@ function renderGameDifficulty() {
                 renderLevelGame(level, appEl);
             }
         }
-    })
+    });
 }
 
 renderGameDifficulty();

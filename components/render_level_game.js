@@ -1,20 +1,20 @@
-import { cardsSuitsArr } from "./arrayCardsSuits.js"
+import { cardsSuitsArr } from "./array_cards_suits.js";
 
 export function renderLevelGame(level, appEl) {
+    let levelGame = level.value;
+    const cardsFlipSide = [];
+    //let clickCards = false;
 
-let levelGame = level.value;
-const cardsFlipSide = [];
-//let clickCards = false;
+    function getCardsFlipSideArr(levelGame) {
+        for (let i = 0; i < levelGame; i++) {
+            cardsFlipSide.push(
+                `<img id="cards-click" class="game-cards__flip-side" src="./img/рубашка.png">`,
+            );
+        }
+        return cardsFlipSide;
+    }
 
-function getCardsFlipSideArr(levelGame) {
-
-    for (let i = 0; i < levelGame; i++) {
-        cardsFlipSide.push(`<img id="cards-click" class="game-cards__flip-side" src="./img/рубашка.png">`);
-    }; 
-    return cardsFlipSide;   
-}
-
-getCardsFlipSideArr(levelGame);
+    getCardsFlipSideArr(levelGame);
 
     const appHTML = `   
     <div class="game-cards">
@@ -32,27 +32,22 @@ getCardsFlipSideArr(levelGame);
     </div> `;
     appEl.innerHTML = appHTML;
 
+    const reverseSlideCards = document.querySelectorAll(
+        ".game-cards__flip-side",
+    );
 
-const reverseSlideCards = document.querySelectorAll('.game-cards__flip-side')
+    for (const reverseSlideCard of reverseSlideCards) {
+        reverseSlideCard.addEventListener("click", () => {
+            let cardsSuitsArraySort = cardsSuitsArr.sort(
+                () => Math.random() - 0.5,
+            );
+            document.getElementById(
+                "suits",
+            ).innerHTML = `${cardsSuitsArraySort.slice(0, level.value)}`;
 
-
-
-for (const reverseSlideCard of reverseSlideCards) {
-    reverseSlideCard.addEventListener('click', () => {
-
-       let cardsSuitsArraySort = cardsSuitsArr.sort(() => Math.random() - 0.5);
-        document.getElementById('suits').innerHTML = `${cardsSuitsArraySort.slice(0, level.value)}`;
-
-        setTimeout(() => {
-            renderLevelGame(level, appEl);
-           }, 5000);
-    })
-
-}
-
-
-
-
-
-
+            setTimeout(() => {
+                renderLevelGame(level, appEl);
+            }, 5000);
+        });
+    }
 }

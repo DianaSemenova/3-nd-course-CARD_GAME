@@ -42,6 +42,5 @@ export const cardsSuitsArr = [
     `<img class="game-cards__flip-side" src="./img/туз бубны.png">`,
     `<img class="game-cards__flip-side" src="./img/туз крести.png">`,
     `<img class="game-cards__flip-side" src="./img/туз пики.png">`,
-    `<img class="game-cards__flip-side" src="./img/туз черви.png">`   
-]
-
+    `<img class="game-cards__flip-side" src="./img/туз черви.png">`,
+];
