@@ -52,7 +52,7 @@ body {
   color: #fff;
   align-self: center;
   font-variant-numeric: lining-nums proportional-nums;
-  font-family: StratosSkyeng;
+  font-family: StratosSkyeng, sans-serif;
   font-size: 24px;
   font-style: normal;
   font-weight: 400;
@@ -76,7 +76,7 @@ body {
   border: none;
   color: #0080c1;
   text-align: center;
-  font-family: StratosSkyeng;
+  font-family: StratosSkyeng, sans-serif;
   font-size: 64px;
   font-style: normal;
   font-weight: 400;
@@ -98,7 +98,7 @@ body {
   border-radius: 12px;
   border: none;
   color: #0080c1;
-  font-family: StratosSkyeng;
+  font-family: StratosSkyeng, sans-serif;
   font-size: 64px;
   font-style: normal;
   font-weight: 400;
@@ -132,7 +132,7 @@ body {
 .game-cards-timer__item {
   color: #fff;
   font-variant-numeric: lining-nums proportional-nums;
-  font-family: StratosSkyeng;
+  font-family: StratosSkyeng, sans-serif;
   font-size: 16px;
   font-style: normal;
   font-weight: 400;
@@ -140,7 +140,7 @@ body {
 }
 .game-cards-timer__time {
   color: #fff;
-  font-family: StratosSkyeng;
+  font-family: StratosSkyeng, sans-serif;
   font-size: 64px;
   font-style: normal;
   font-weight: 400;
@@ -149,7 +149,7 @@ body {
 .game-cards__suits {
   padding: 48px;
   display: grid;
-  grid-template-columns: repeat(12, auto);
+  grid-template-columns: repeat(6, auto);
   justify-content: center;
   gap: 15px;
 }/*# sourceMappingURL=style.css.map */

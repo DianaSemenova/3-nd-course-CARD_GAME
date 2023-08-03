@@ -1,3 +1,4 @@
+import { shuffle } from "lodash";
 import { cardsSuitsArr } from "./array_cards_suits.js";
 
 export function renderLevelGame(level, appEl) {
@@ -11,7 +12,7 @@ export function renderLevelGame(level, appEl) {
                 `<img id="cards-click" class="game-cards__flip-side" src="./img/рубашка.png">`,
             );
         }
-        return;
+        return cardsFlipSide;
     }
 
     getCardsFlipSideArr(levelGame);
@@ -28,7 +29,7 @@ export function renderLevelGame(level, appEl) {
          </div>
          <button class="box-game__button" id="submit-button" type="submit">Начать заново</button>
      </header>
-     <div class="game-cards__suits center" id="suits">${cardsFlipSide}</div>
+     <div class="game-cards__suits center" id="suits">${cardsFlipSide.join("")}</div>
     </div> `;
     appEl.innerHTML = appHTML;
 
@@ -38,11 +39,12 @@ export function renderLevelGame(level, appEl) {
 
     for (const reverseSlideCard of reverseSlideCards) {
         reverseSlideCard.addEventListener("click", () => {
-            const cardsSuitsArraySort = cardsSuitsArr.sort(
-                () => Math.random() - 0.5,
-            );
-            //    const duplicateCardsArr =  (([].concat(cardsSuitsArraySort, cardsSuitsArraySort)).sort()).slice(0, level.value);
-            //    console.log(duplicateCardsArr);
+            const cardsSuitsArraySort = shuffle(cardsSuitsArr);
+
+            // cardsSuitsArr.sort(
+            //     () => Math.random() - 0.5,
+            // );
+
             const duplicateCardsArr = cardsSuitsArraySort
                 .reduce(
                     (newArr, currentValue) =>
@@ -50,13 +52,14 @@ export function renderLevelGame(level, appEl) {
                     [],
                 )
                 .slice(0, level.value);
-            const duplicateCardsArrSort = duplicateCardsArr.sort(
-                () => Math.random() - 0.5,
-            );
+            const duplicateCardsArrSort = shuffle(duplicateCardsArr);
+            //  duplicateCardsArr.sort(
+            //     () => Math.random() - 0.5,
+            // );
 
             document.getElementById(
                 "suits",
-            ).innerHTML = `${duplicateCardsArrSort}`;
+            ).innerHTML = `${duplicateCardsArrSort.join("")}`;
 
             setTimeout(() => {
                 renderLevelGame(level, appEl);
