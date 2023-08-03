@@ -11,7 +11,7 @@
         "lint:js": "eslint ./**/*.js",
         "lint:scss": "stylelint ./style/**/*.scss",
         "prepare": "husky install",
-        "lint": "npm run lint:js"
+        "lint": "npm run lint:js && npm run lint:scss"
     },
     "repository": {
         "type": "git",
@@ -25,7 +25,8 @@
     "homepage": "https://github.com/DianaSemenova/3-nd-course-CARD_GAME#readme",
     "dependencies": {
         "http-server": "^14.1.1",
-        "lodash": "^4.17.21"
+        "lodash": "^4.17.21",
+        "postcss-scss": "^4.0.6"
     },
     "devDependencies": {
         "axios": "^1.4.0",

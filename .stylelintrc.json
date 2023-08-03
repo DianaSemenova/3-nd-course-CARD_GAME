@@ -1,6 +1,6 @@
 {
-    "extends": ["stylelint-config-standard", "stylelint-prettier/recommended"],
-    "plugins": ["stylelint-prettier"],
+    "extends": "stylelint-config-recommended",
+    "customSyntax": "postcss-scss",
     "rules": {
         "prettier/prettier": true,
         "font-family-no-missing-generic-family-keyword": [true]
