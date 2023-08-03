@@ -1,8 +1,12 @@
 {
-    "extends": "stylelint-config-recommended",
+    "extends": [
+        "stylelint-config-recommended",
+        "stylelint-prettier/recommended"
+    ],
     "customSyntax": "postcss-scss",
     "rules": {
+        "prettier/prettier": true,
         "font-family-no-missing-generic-family-keyword": [true],
-        "prettier/prettier": true
+        "no-invalid-position-at-import-rule": null
     }
 }
