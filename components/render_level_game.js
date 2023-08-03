@@ -11,7 +11,7 @@ export function renderLevelGame(level, appEl) {
                 `<img id="cards-click" class="game-cards__flip-side" src="./img/рубашка.png">`,
             );
         }
-        return cardsFlipSide;
+        return;
     }
 
     getCardsFlipSideArr(levelGame);
@@ -38,12 +38,25 @@ export function renderLevelGame(level, appEl) {
 
     for (const reverseSlideCard of reverseSlideCards) {
         reverseSlideCard.addEventListener("click", () => {
-            let cardsSuitsArraySort = cardsSuitsArr.sort(
+            const cardsSuitsArraySort = cardsSuitsArr.sort(
                 () => Math.random() - 0.5,
             );
+            //    const duplicateCardsArr =  (([].concat(cardsSuitsArraySort, cardsSuitsArraySort)).sort()).slice(0, level.value);
+            //    console.log(duplicateCardsArr);
+            const duplicateCardsArr = cardsSuitsArraySort
+                .reduce(
+                    (newArr, currentValue) =>
+                        newArr.concat([currentValue, currentValue]),
+                    [],
+                )
+                .slice(0, level.value);
+            const duplicateCardsArrSort = duplicateCardsArr.sort(
+                () => Math.random() - 0.5,
+            );
+
             document.getElementById(
                 "suits",
-            ).innerHTML = `${cardsSuitsArraySort.slice(0, level.value)}`;
+            ).innerHTML = `${duplicateCardsArrSort}`;
 
             setTimeout(() => {
                 renderLevelGame(level, appEl);
