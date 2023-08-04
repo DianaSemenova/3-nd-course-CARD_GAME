@@ -1,0 +1,39 @@
+.game-cards {
+    padding: 22px;
+    display: flex;
+    flex-direction: column;
+    &-timer {
+        display: flex;
+        justify-content: space-between;
+        &__init {
+            display: flex;
+            justify-content: flex-end;
+            gap: 57px;
+        }
+        &__item {
+            color: #fff;
+            font-variant-numeric: lining-nums proportional-nums;
+            font-family: StratosSkyeng, sans-serif;
+            font-size: 16px;
+            font-style: normal;
+            font-weight: 400;
+            line-height: 32px;
+        }
+        &__time {
+            color: #fff;
+            font-family: StratosSkyeng, sans-serif;
+            font-size: 64px;
+            font-style: normal;
+            font-weight: 400;
+            line-height: 72px;
+        }
+    }
+
+    &__suits {
+        padding: 48px;
+        display: grid;
+        grid-template-columns: repeat(6, auto);
+        justify-content: center;
+        gap: 15px;
+    }
+}
