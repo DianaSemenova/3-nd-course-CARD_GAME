@@ -9,7 +9,7 @@ export function renderLevelGame(level, appEl) {
     function getCardsFlipSideArr(levelGame) {
         for (let i = 0; i < levelGame; i++) {
             cardsFlipSide.push(
-                `<img id="cards-click" class="game-cards__flip-side" src="./img/рубашка.png">`,
+                `<img id="cards-click" class="game-cards__flip-side" src="../static/img/рубашка.png">`,
             );
         }
         return cardsFlipSide;
@@ -29,7 +29,9 @@ export function renderLevelGame(level, appEl) {
          </div>
          <button class="box-game__button" id="submit-button" type="submit">Начать заново</button>
      </header>
-     <div class="game-cards__suits center" id="suits">${cardsFlipSide.join("")}</div>
+     <div class="game-cards__suits center" id="suits">${cardsFlipSide.join(
+         "",
+     )}</div>
     </div> `;
     appEl.innerHTML = appHTML;
 
@@ -39,23 +41,14 @@ export function renderLevelGame(level, appEl) {
 
     for (const reverseSlideCard of reverseSlideCards) {
         reverseSlideCard.addEventListener("click", () => {
-            const cardsSuitsArraySort = shuffle(cardsSuitsArr);
-
-            // cardsSuitsArr.sort(
-            //     () => Math.random() - 0.5,
-            // );
+            const cardsSuitsArraySort = shuffle(cardsSuitsArr).slice(
+                0,
+                level.value / 2,
+            );
 
             const duplicateCardsArr = cardsSuitsArraySort
-                .reduce(
-                    (newArr, currentValue) =>
-                        newArr.concat([currentValue, currentValue]),
-                    [],
-                )
-                .slice(0, level.value);
+                .concat(cardsSuitsArraySort);
             const duplicateCardsArrSort = shuffle(duplicateCardsArr);
-            //  duplicateCardsArr.sort(
-            //     () => Math.random() - 0.5,
-            // );
 
             document.getElementById(
                 "suits",

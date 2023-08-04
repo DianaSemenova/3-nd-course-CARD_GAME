@@ -2,8 +2,11 @@ const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const CopyPlugin = require("copy-webpack-plugin");
 
+const isProduction = process.env.NODE_ENV;
+
 module.exports = {
     entry: "./index.js",
+    mode: isProduction ? "production" : "development",
     module: {
         rules: [
             { test: /\.scss$/, use: ["style-loader", "scss-loader"] },
