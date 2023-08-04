@@ -1,4 +1,6 @@
 const path = require("path");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
+const CopyPlugin = require("copy-webpack-plugin");
 
 module.exports = {
     entry: "./index.js",
@@ -20,5 +22,13 @@ module.exports = {
         path: path.resolve(__dirname, "dist"),
         filename: "main.js",
         clean: true,
-    }
+    },
+    plugins: [
+        new CopyPlugin({
+            patterns: [{ from: "static", to: "static" }], //сохраняет все статичные файлы
+        }),
+        new HtmlWebpackPlugin({
+            template: "./index.html",
+        }),
+    ],
 };
