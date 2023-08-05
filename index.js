@@ -1,4 +1,5 @@
 import { renderLevelGame } from "./components/render_level_game.js";
+import "./style/style.css";
 
 function renderGameDifficulty() {
     let appEl = document.getElementById("app");
