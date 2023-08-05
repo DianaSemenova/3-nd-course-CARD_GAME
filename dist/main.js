@@ -137,9 +137,14 @@ __webpack_require__.r(__webpack_exports__);
 function renderLevelGame(level, appEl) {
     let levelGame = level.value;
     const cardsFlipSide = [];
-    //let clickCards = false;
 
-    function getCardsFlipSideArr(levelGame) {
+    const cardsSuitsArraySort = (0,lodash__WEBPACK_IMPORTED_MODULE_0__.shuffle)(_array_cards_suits_js__WEBPACK_IMPORTED_MODULE_1__.cardsSuitsArr).slice(0, levelGame / 2);
+
+    const duplicateCardsArr = cardsSuitsArraySort.concat(cardsSuitsArraySort);
+    const duplicateCardsArrSort = (0,lodash__WEBPACK_IMPORTED_MODULE_0__.shuffle)(duplicateCardsArr);
+    const comparisonArrCards = duplicateCardsArrSort;
+
+    function getCardsFlipSideArr() {
         for (let i = 0; i < levelGame; i++) {
             cardsFlipSide.push(
                 `<img id="cards-click" class="game-cards__flip-side" src="../static/img/рубашка.png">`,
@@ -149,6 +154,31 @@ function renderLevelGame(level, appEl) {
     }
 
     getCardsFlipSideArr(levelGame);
+
+   
+
+    setTimeout(() => {
+        document.getElementById("suits").innerHTML = `${cardsFlipSide.join(
+            "",
+        )}`;
+
+        const reverseSlideCards = document.querySelectorAll(
+            ".game-cards__flip-side",
+        );
+
+        for (const reverseSlideCard of reverseSlideCards) {
+            //console.log(reverseSlideCard);
+            reverseSlideCard.addEventListener("click", () => {
+
+                
+
+
+                console.log(comparisonArrCards);
+            });
+        }
+    }, 5000);
+
+   
 
     const appHTML = `   
     <div class="game-cards">
@@ -162,36 +192,11 @@ function renderLevelGame(level, appEl) {
          </div>
          <button class="box-game__button" id="submit-button" type="submit">Начать заново</button>
      </header>
-     <div class="game-cards__suits center" id="suits">${cardsFlipSide.join(
+     <div class="game-cards__suits center" id="suits">${duplicateCardsArrSort.join(
          "",
      )}</div>
     </div> `;
     appEl.innerHTML = appHTML;
-
-    const reverseSlideCards = document.querySelectorAll(
-        ".game-cards__flip-side",
-    );
-
-    for (const reverseSlideCard of reverseSlideCards) {
-        reverseSlideCard.addEventListener("click", () => {
-            const cardsSuitsArraySort = (0,lodash__WEBPACK_IMPORTED_MODULE_0__.shuffle)(_array_cards_suits_js__WEBPACK_IMPORTED_MODULE_1__.cardsSuitsArr).slice(
-                0,
-                level.value / 2,
-            );
-
-            const duplicateCardsArr = cardsSuitsArraySort
-                .concat(cardsSuitsArraySort);
-            const duplicateCardsArrSort = (0,lodash__WEBPACK_IMPORTED_MODULE_0__.shuffle)(duplicateCardsArr);
-
-            document.getElementById(
-                "suits",
-            ).innerHTML = `${duplicateCardsArrSort.join("")}`;
-
-            setTimeout(() => {
-                renderLevelGame(level, appEl);
-            }, 5000);
-        });
-    }
 }
 
 
@@ -17522,14 +17527,14 @@ var __webpack_exports__ = {};
   !*** ./index.js ***!
   \******************/
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _components_render_level_game_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./components/render_level_game.js */ "./components/render_level_game.js");
-/* harmony import */ var _style_style_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./style/style.css */ "./style/style.css");
+/* harmony import */ var _style_style_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./style/style.css */ "./style/style.css");
+/* harmony import */ var _components_render_level_game_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./components/render_level_game.js */ "./components/render_level_game.js");
 /* harmony import */ var _components_render_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./components/render.js */ "./components/render.js");
 
 
 
 
-(0,_components_render_js__WEBPACK_IMPORTED_MODULE_2__.renderGameDifficulty)(_components_render_level_game_js__WEBPACK_IMPORTED_MODULE_0__.renderLevelGame);
+(0,_components_render_js__WEBPACK_IMPORTED_MODULE_2__.renderGameDifficulty)(_components_render_level_game_js__WEBPACK_IMPORTED_MODULE_1__.renderLevelGame);
 
 })();
 
