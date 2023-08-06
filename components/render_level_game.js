@@ -40,9 +40,20 @@ export function renderLevelGame(level, appEl) {
     </div> `;
     appEl.innerHTML = appHTML;
 
-    let clickCards = false;
+    let clickCards = true;
+    let firstIndexCard = null;
+    // function setfirstIndexCard(newIndex) {
+    //     let firstIndexCard = newIndex;
+    //     return firstIndexCard;
+    // }
+
+
+
+
+    
 
     function flipsСards() {
+
         setTimeout(() => {
             // const suitsHTML = document.getElementById("suits");
             document.getElementById("suits").innerHTML = `${cardsFlipSide.join(
@@ -57,23 +68,17 @@ export function renderLevelGame(level, appEl) {
                 reverseSlideCard.addEventListener("click", () => {
                     let cardsIndex = reverseSlideCard.dataset.index;
 
-                    function setfirstIndexCard(newIndex) {
-                        let firstIndexCard = newIndex;
-                        return firstIndexCard;
-                    }
-
                     if (clickCards) {
                         console.log(clickCards);
                         cardsFlipSide[cardsIndex] =
                             duplicateCardsArrSort[cardsIndex];
-                        let firstIndexCard = cardsIndex;
+                        firstIndexCard = cardsIndex;
                         setfirstIndexCard(firstIndexCard);
 
                         console.log(firstIndexCard);
                         document.getElementById(
                             "suits",
                         ).innerHTML = `${cardsFlipSide.join("")}`;
-
                         flipsСards();
                     } else {
                         cardsFlipSide[cardsIndex] =
@@ -85,8 +90,9 @@ export function renderLevelGame(level, appEl) {
                             "suits",
                         ).innerHTML = `${cardsFlipSide.join("")}`;
 
+                        comparingTwoCard(firstIndexCard, secondIndexCard);
+
                         flipsСards();
-                        //comparingTwoCard(secondIndexCard);
 
                         console.log(clickCards);
                     }
@@ -101,9 +107,9 @@ export function renderLevelGame(level, appEl) {
 
     flipsСards();
 
-    function comparingTwoCard(firstIndexCard, secondIndexCard, flipsСards) {
+    function comparingTwoCard(firstIndexCard, secondIndexCard) {
         if (cardsFlipSide[firstIndexCard] === cardsFlipSide[secondIndexCard]) {
-            flipsСards();
+            alert("выиграл");
         } else {
             alert("проиграл");
         }
