@@ -109,7 +109,7 @@ export function renderLevelGame(level, appEl) {
     function comparingTwoCard(firstIndexCard, secondIndexCard) {
         if (cardsFlipSide[firstIndexCard] === cardsFlipSide[secondIndexCard]) {
             flipsСards ();
-            console.log('Выиграл');
+            alert('Выиграл');
         } else {
             alert("проиграл");
         }
