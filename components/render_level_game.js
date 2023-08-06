@@ -73,8 +73,7 @@ export function renderLevelGame(level, appEl) {
                         cardsFlipSide[cardsIndex] =
                             duplicateCardsArrSort[cardsIndex];
                         firstIndexCard = cardsIndex;
-                        setfirstIndexCard(firstIndexCard);
-
+                        
                         console.log(firstIndexCard);
                         document.getElementById(
                             "suits",
