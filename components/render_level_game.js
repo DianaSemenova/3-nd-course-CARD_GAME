@@ -1,7 +1,7 @@
 import { shuffle } from "lodash";
 import { cardsSuitsArr } from "./array_cards_suits.js";
 
-export function renderLevelGame(level, appEl) {
+export function renderLevelGame(level, appEl, renderGameDifficulty) {
     let levelGame = level.value;
     const cardsFlipSide = [];
 
@@ -55,8 +55,6 @@ export function renderLevelGame(level, appEl) {
 
     function flipsСards() {
 
-        setTimeout(() => {
-            // const suitsHTML = document.getElementById("suits");
             document.getElementById("suits").innerHTML = `${cardsFlipSide.join(
                 "",
             )}`;
@@ -98,13 +96,11 @@ export function renderLevelGame(level, appEl) {
                     clickCards = !clickCards;
                 });
             }
-            //  }
-            // clickCard();
-            //flipsСards();
-        }, 5000);
-    }
+          }
 
-    flipsСards();
+
+    setTimeout(flipsСards, 5000)
+   
 
     function comparingTwoCard(firstIndexCard, secondIndexCard) {
         if (cardsFlipSide[firstIndexCard] === cardsFlipSide[secondIndexCard]) {
@@ -112,6 +108,7 @@ export function renderLevelGame(level, appEl) {
             alert('Выиграл');
         } else {
             alert("проиграл");
+            renderGameDifficulty(renderLevelGame);
         }
     }
 }
