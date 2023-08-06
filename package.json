@@ -6,7 +6,8 @@
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1",
         "dev": "webpack --mode development --watch",
-        "start": "http-server -p 3004",
+        "build": "SET NODE_ENV='production' && webpack",
+        "start": "webpack-dev-server --open",
         "format": "prettier --write ./",
         "lint:js": "eslint ./**/*.js",
         "lint:scss": "stylelint ./style/**/*.scss",
@@ -26,15 +27,23 @@
     "dependencies": {
         "http-server": "^14.1.1",
         "lodash": "^4.17.21",
-        "postcss-scss": "^4.0.6"
+        "postcss-scss": "^4.0.6",
+        "webpack-dev-server": "^4.15.1"
     },
     "devDependencies": {
         "axios": "^1.4.0",
+        "copy-webpack-plugin": "^11.0.0",
+        "css-loader": "^6.8.1",
+        "css-minimizer-webpack-plugin": "^5.0.1",
         "eslint": "^8.46.0",
         "eslint-config-prettier": "^8.9.0",
         "eslint-plugin-prettier": "^5.0.0",
+        "html-webpack-plugin": "^5.5.3",
         "husky": "^8.0.3",
+        "mini-css-extract-plugin": "^2.7.6",
         "prettier": "^3.0.0",
+        "sass": "^1.64.2",
+        "sass-loader": "^13.3.2",
         "stylelint": "^15.10.2",
         "stylelint-config-standard": "^34.0.0",
         "stylelint-prettier": "^4.0.2",
