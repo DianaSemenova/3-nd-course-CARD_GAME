@@ -52,18 +52,22 @@ export function renderLevelGame(level, appEl) {
             const reverseSlideCards = document.querySelectorAll(
                 ".game-cards__flip-side",
             );
-
             //function clickCard() {
             for (const reverseSlideCard of reverseSlideCards) {
                 reverseSlideCard.addEventListener("click", () => {
                     let cardsIndex = reverseSlideCard.dataset.index;
-                    //let firstIndexCard =
+
+                    function setfirstIndexCard(newIndex) {
+                        let firstIndexCard = newIndex;
+                        return firstIndexCard;
+                    }
 
                     if (clickCards) {
                         console.log(clickCards);
                         cardsFlipSide[cardsIndex] =
                             duplicateCardsArrSort[cardsIndex];
                         let firstIndexCard = cardsIndex;
+                        setfirstIndexCard(firstIndexCard);
 
                         console.log(firstIndexCard);
                         document.getElementById(
