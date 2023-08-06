@@ -9,7 +9,7 @@ export function renderLevelGame(level, appEl) {
 
     const duplicateCardsArr = cardsSuitsArraySort.concat(cardsSuitsArraySort);
     const duplicateCardsArrSort = shuffle(duplicateCardsArr);
-   // const comparisonArrCards = duplicateCardsArrSort;
+    // const comparisonArrCards = duplicateCardsArrSort;
 
     function getCardsFlipSideArr() {
         for (let i = 0; i < levelGame; i++) {
@@ -21,44 +21,6 @@ export function renderLevelGame(level, appEl) {
     }
 
     getCardsFlipSideArr(levelGame);
-
-    setTimeout(() => {
-        document.getElementById("suits").innerHTML = `${cardsFlipSide.join(
-            "",
-        )}`;
-
-        const reverseSlideCards = document.querySelectorAll(
-            ".game-cards__flip-side",
-        );
-
-        for (const reverseSlideCard of reverseSlideCards) {
-            //console.log(reverseSlideCard);
-            reverseSlideCard.addEventListener("click", () => {
-                let cardsIndex = reverseSlideCard.dataset.index;
-
-                console.log(cardsIndex);
-
-                cardsFlipSide[cardsIndex] = duplicateCardsArrSort[cardsIndex];
-
-                let firstCart = duplicateCardsArrSort[cardsIndex];
-                console.log(firstCart);
-
-
-                document.getElementById(
-                    "suits",
-                ).innerHTML = `${cardsFlipSide.join("")}`;
-    
-                // cardsFlipSide[cardsIndex] = comparisonArrCards[cardsIndex];
-               
-
-              
-                // document.getElementById(
-                //     "suits",
-                // ).innerHTML = `${cardsFlipSide.join("")}`;
-
-            });
-        }
-    }, 5000);
 
     const appHTML = `   
     <div class="game-cards">
@@ -77,4 +39,69 @@ export function renderLevelGame(level, appEl) {
      )}</div>
     </div> `;
     appEl.innerHTML = appHTML;
+
+    let clickCards = false;
+
+    function flipsСards() {
+        setTimeout(() => {
+            // const suitsHTML = document.getElementById("suits");
+            document.getElementById("suits").innerHTML = `${cardsFlipSide.join(
+                "",
+            )}`;
+
+            const reverseSlideCards = document.querySelectorAll(
+                ".game-cards__flip-side",
+            );
+
+            //function clickCard() {
+            for (const reverseSlideCard of reverseSlideCards) {
+                reverseSlideCard.addEventListener("click", () => {
+                    let cardsIndex = reverseSlideCard.dataset.index;
+                    //let firstIndexCard =
+
+                    if (clickCards) {
+                        console.log(clickCards);
+                        cardsFlipSide[cardsIndex] =
+                            duplicateCardsArrSort[cardsIndex];
+                        let firstIndexCard = cardsIndex;
+
+                        console.log(firstIndexCard);
+                        document.getElementById(
+                            "suits",
+                        ).innerHTML = `${cardsFlipSide.join("")}`;
+
+                        flipsСards();
+                    } else {
+                        cardsFlipSide[cardsIndex] =
+                            duplicateCardsArrSort[cardsIndex];
+
+                        let secondIndexCard = cardsIndex;
+                        console.log(secondIndexCard);
+                        document.getElementById(
+                            "suits",
+                        ).innerHTML = `${cardsFlipSide.join("")}`;
+
+                        flipsСards();
+                        //comparingTwoCard(secondIndexCard);
+
+                        console.log(clickCards);
+                    }
+                    clickCards = !clickCards;
+                });
+            }
+            //  }
+            // clickCard();
+            //flipsСards();
+        }, 5000);
+    }
+
+    flipsСards();
+
+    function comparingTwoCard(firstIndexCard, secondIndexCard, flipsСards) {
+        if (cardsFlipSide[firstIndexCard] === cardsFlipSide[secondIndexCard]) {
+            flipsСards();
+        } else {
+            alert("проиграл");
+        }
+    }
 }
