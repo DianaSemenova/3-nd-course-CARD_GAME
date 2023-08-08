@@ -7,9 +7,10 @@ export function renderLevelGame(level, appEl, renderGameDifficulty) {
 
     const cardsSuitsArraySort = shuffle(cardsSuitsArr).slice(0, levelGame / 2);
 
-    const duplicateCardsArr = cardsSuitsArraySort.concat(cardsSuitsArraySort);
-    const duplicateCardsArrSort = shuffle(duplicateCardsArr);
-    // const comparisonArrCards = duplicateCardsArrSort;
+    const duplicateCardsArrSort = shuffle(
+        cardsSuitsArraySort.concat(cardsSuitsArraySort),
+    );
+    // const duplicateCardsArrSort = shuffle(duplicateCardsArr);
 
     function getCardsFlipSideArr() {
         for (let i = 0; i < levelGame; i++) {
@@ -43,69 +44,66 @@ export function renderLevelGame(level, appEl, renderGameDifficulty) {
     let clickCards = true;
     let firstIndexCard = null;
     let secondIndexCard = null;
-    // function setfirstIndexCard(newIndex) {
-    //     let firstIndexCard = newIndex;
-    //     return firstIndexCard;
-    // }
 
-
-
-
-    
+    const startOverGameButtons = document.getElementById("submit-button");
+    startOverGameButtons.addEventListener("click", () => {
+        renderGameDifficulty(renderLevelGame);
+    });
 
     function flipsСards() {
+        document.getElementById("suits").innerHTML = `${cardsFlipSide.join(
+            "",
+        )}`;
 
-            document.getElementById("suits").innerHTML = `${cardsFlipSide.join(
-                "",
-            )}`;
+        const reverseSlideCards = document.querySelectorAll(
+            ".game-cards__flip-side",
+        );
 
-            const reverseSlideCards = document.querySelectorAll(
-                ".game-cards__flip-side",
-            );
-          
-            for (const reverseSlideCard of reverseSlideCards) {
-                reverseSlideCard.addEventListener("click", () => {
-                    let cardsIndex = reverseSlideCard.dataset.index;
+        for (const reverseSlideCard of reverseSlideCards) {
+            reverseSlideCard.addEventListener("click", () => {
+                let cardsIndex = reverseSlideCard.dataset.index;
 
-                    if (clickCards) {
-                        console.log(clickCards);
-                        cardsFlipSide[cardsIndex] =
-                            duplicateCardsArrSort[cardsIndex];
-                        firstIndexCard = cardsIndex;
+                if (clickCards) {
+                    console.log(clickCards);
+                    cardsFlipSide[cardsIndex] =
+                        duplicateCardsArrSort[cardsIndex];
+                    firstIndexCard = cardsIndex;
 
-                        console.log(firstIndexCard);
-                        document.getElementById(
-                            "suits",
-                        ).innerHTML = `${cardsFlipSide.join("")}`;
+                    console.log(firstIndexCard);
+                    document.getElementById(
+                        "suits",
+                    ).innerHTML = `${cardsFlipSide.join("")}`;
 
-                        flipsСards();
-                    } else {
-                        cardsFlipSide[cardsIndex] =
-                            duplicateCardsArrSort[cardsIndex];
+                    flipsСards();
+                } else {
+                    cardsFlipSide[cardsIndex] =
+                        duplicateCardsArrSort[cardsIndex];
 
-                        secondIndexCard = cardsIndex;
-                        console.log(secondIndexCard);
-                        document.getElementById(
-                            "suits",
-                        ).innerHTML = `${cardsFlipSide.join("")}`;
+                    secondIndexCard = cardsIndex;
+                    console.log(secondIndexCard);
+                    document.getElementById(
+                        "suits",
+                    ).innerHTML = `${cardsFlipSide.join("")}`;
 
-                        comparingTwoCard(firstIndexCard, secondIndexCard,  flipsСards);                     
+                    comparingTwoCard(
+                        firstIndexCard,
+                        secondIndexCard,
+                        flipsСards,
+                    );
 
-                        console.log(clickCards);
-                    }
-                    clickCards = !clickCards;
-                });
-            }
-          }
+                    console.log(clickCards);
+                }
+                clickCards = !clickCards;
+            });
+        }
+    }
 
-
-    setTimeout(flipsСards, 5000)
-   
+    setTimeout(flipsСards, 5000);
 
     function comparingTwoCard(firstIndexCard, secondIndexCard) {
         if (cardsFlipSide[firstIndexCard] === cardsFlipSide[secondIndexCard]) {
-            flipsСards ();
-            alert('Выиграл');
+            flipsСards();
+            alert("Выиграл");
         } else {
             alert("проиграл");
             renderGameDifficulty(renderLevelGame);

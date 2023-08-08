@@ -20,7 +20,7 @@ export function renderGameDifficulty(renderLevelGame) {
             <label class="box-difficulty-level__label" for="radio3">3</label>
 
         </div>
-        <button class="box-game__button" id="submit-button" type="submit">Старт</button>
+        <button class="box-game__button"  type="submit">Старт</button>
     </form>
 </div>`;
 
