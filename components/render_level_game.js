@@ -31,12 +31,10 @@ export function renderLevelGame(level, appEl, renderGameDifficulty) {
 
     appEl.innerHTML = "";
 
-
-    
     setTimeout(() => {
         counterTime(hour, min, sec, stopTimer);
     }, 5000);
- 
+
     getLayoutHTML(duplicateCardsArrSort, appEl, hour, min, sec);
     const fontGameCards = document.querySelector(".game-cards");
 
@@ -64,12 +62,9 @@ export function renderLevelGame(level, appEl, renderGameDifficulty) {
             reverseSlideCard.addEventListener("click", () => {
                 let cardsIndex = reverseSlideCard.dataset.index;
                 if (clickCards) {
-                    console.log(clickCards);
                     cardsFlipSide[cardsIndex] =
                         duplicateCardsArrSort[cardsIndex];
                     firstIndexCard = cardsIndex;
-
-                    console.log(firstIndexCard);
                     document.getElementById(
                         "suits",
                     ).innerHTML = `${cardsFlipSide.join("")}`;
@@ -90,9 +85,7 @@ export function renderLevelGame(level, appEl, renderGameDifficulty) {
                         secondIndexCard,
                         flipsСards,
                     );
-
-                    console.log(clickCards);
-
+                    
                     counter = counter - 2;
                     if (counter === 0) {
                         winGame = !winGame;
@@ -116,6 +109,7 @@ export function renderLevelGame(level, appEl, renderGameDifficulty) {
         } else {
             alert("проиграл");
             stopTimer = true;
+            console.log(stopTimer);
             counterTime(hour, min, sec, stopTimer);
             fontGameCards.style.opacity = ".3";
             getModalWindowGame(winGame);
