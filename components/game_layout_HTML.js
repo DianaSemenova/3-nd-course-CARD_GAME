@@ -1,4 +1,4 @@
-export function getLayoutHTML(duplicateCardsArrSort, appEl) {
+export function getLayoutHTML(duplicateCardsArrSort, appEl, hour, min, sec) {
     const appHTML = `   
     <div class="game-cards">
      <header class="game-cards-timer">
@@ -7,7 +7,7 @@ export function getLayoutHTML(duplicateCardsArrSort, appEl) {
                 <p class="game-cards-timer__item">min</p>
                 <p class="game-cards-timer__item">sec</p>
             </div>   
-             <p class="game-cards-timer__time">00.00</p>         
+             <p class="game-cards-timer__time">${hour}:${min}:${sec}</p>         
          </div>
          <button class="box-game__button" id="submit-button" type="submit">Начать заново</button>
      </header>
@@ -17,3 +17,4 @@ export function getLayoutHTML(duplicateCardsArrSort, appEl) {
     </div> `;
     appEl.innerHTML = appHTML;
 }
+

@@ -2,7 +2,6 @@ export function renderGameDifficulty(renderLevelGame) {
     let appEl = document.getElementById("app");
 
 
-
     const appHTML = `
     <div class="top center">
     <form id="form-level" class="box-game" method="POST" action="#">

@@ -1,17 +1,20 @@
 import { shuffle } from "lodash";
 import { cardsSuitsArr } from "./array_cards_suits.js";
 import { getLayoutHTML } from "./game_layout_HTML.js";
+import { counterTime } from "./timer.js";
 
 export function renderLevelGame(level, appEl, renderGameDifficulty) {
+    let hour = 0;
+    let min = 0;
+    let sec = 0;
+
     let levelGame = level.value;
+
     const cardsFlipSide = [];
-
     const cardsSuitsArraySort = shuffle(cardsSuitsArr).slice(0, levelGame / 2);
-
     const duplicateCardsArrSort = shuffle(
         cardsSuitsArraySort.concat(cardsSuitsArraySort),
     );
-    // const duplicateCardsArrSort = shuffle(duplicateCardsArr);
 
     function getCardsFlipSideArr() {
         for (let i = 0; i < levelGame; i++) {
@@ -26,25 +29,9 @@ export function renderLevelGame(level, appEl, renderGameDifficulty) {
 
     appEl.innerHTML = "";
 
-    // const appHTML = `
-    // <div class="game-cards">
-    //  <header class="game-cards-timer">
-    //      <div class="game-cards-timer__module">
-    //         <div class="game-cards-timer__init">
-    //             <p class="game-cards-timer__item">min</p>
-    //             <p class="game-cards-timer__item">sec</p>
-    //         </div>
-    //          <p class="game-cards-timer__time">00.00</p>
-    //      </div>
-    //      <button class="box-game__button" id="submit-button" type="submit">Начать заново</button>
-    //  </header>
-    //  <div class="game-cards__suits center" id="suits">${duplicateCardsArrSort.join(
-    //      "",
-    //  )}</div>
-    // </div> `;
-    // appEl.innerHTML = appHTML;
+    counterTime(hour, min, sec);
 
-    getLayoutHTML(duplicateCardsArrSort, appEl);
+    getLayoutHTML(duplicateCardsArrSort, appEl, hour, min, sec);
 
     let clickCards = true;
     let firstIndexCard = null;
@@ -57,6 +44,7 @@ export function renderLevelGame(level, appEl, renderGameDifficulty) {
     });
 
     function flipsСards() {
+        //document.addEventListener("DOMContentLoaded", () => {
         document.getElementById("suits").innerHTML = `${cardsFlipSide.join(
             "",
         )}`;
@@ -107,15 +95,20 @@ export function renderLevelGame(level, appEl, renderGameDifficulty) {
                 clickCards = !clickCards;
             });
         }
+        //});
     }
 
     setTimeout(flipsСards, 5000);
 
-    function comparingTwoCard(firstIndexCard, secondIndexCard, counter) {
+    function comparingTwoCard(firstIndexCard, secondIndexCard) {
         if (cardsFlipSide[firstIndexCard] === cardsFlipSide[secondIndexCard]) {
             flipsСards();
         } else {
             alert("проиграл");
+            clearTimeout(counterTime);
+
+            console.log(`время = ${hour}:${min}:${sec}`);
         }
     }
+    //  });
 }
