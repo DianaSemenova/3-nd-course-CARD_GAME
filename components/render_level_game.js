@@ -31,8 +31,12 @@ export function renderLevelGame(level, appEl, renderGameDifficulty) {
 
     appEl.innerHTML = "";
 
-    counterTime(hour, min, sec, stopTimer);
 
+    
+    setTimeout(() => {
+        counterTime(hour, min, sec, stopTimer);
+    }, 5000);
+ 
     getLayoutHTML(duplicateCardsArrSort, appEl, hour, min, sec);
     const fontGameCards = document.querySelector(".game-cards");
 
@@ -85,7 +89,6 @@ export function renderLevelGame(level, appEl, renderGameDifficulty) {
                         firstIndexCard,
                         secondIndexCard,
                         flipsСards,
-                        counter,
                     );
 
                     console.log(clickCards);
