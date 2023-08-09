@@ -1,6 +1,6 @@
 import { shuffle } from "lodash";
 import { cardsSuitsArr } from "./array_cards_suits.js";
-import { getLayoutHTML } from "./game_layout_HTML.js";
+import { getLayoutHTML, getModalWindowGame } from "./game_layout_HTML.js";
 import { counterTime } from "./timer.js";
 
 export function renderLevelGame(level, appEl, renderGameDifficulty) {
@@ -32,11 +32,13 @@ export function renderLevelGame(level, appEl, renderGameDifficulty) {
     counterTime(hour, min, sec);
 
     getLayoutHTML(duplicateCardsArrSort, appEl, hour, min, sec);
+    const fontGameCards = document.querySelector(".game-cards");
 
     let clickCards = true;
     let firstIndexCard = null;
     let secondIndexCard = null;
     let counter = levelGame;
+    //let win;
 
     const startOverGameButtons = document.getElementById("submit-button");
     startOverGameButtons.addEventListener("click", () => {
@@ -90,6 +92,8 @@ export function renderLevelGame(level, appEl, renderGameDifficulty) {
                     counter = counter - 2;
                     if (counter === 0) {
                         alert("Выиграл");
+                        fontGameCards.style.opacity = ".3";
+                        getModalWindowGame();
                     }
                 }
                 clickCards = !clickCards;
@@ -106,7 +110,8 @@ export function renderLevelGame(level, appEl, renderGameDifficulty) {
         } else {
             alert("проиграл");
             clearTimeout(counterTime);
-
+            fontGameCards.style.opacity = ".3";
+            getModalWindowGame();
             console.log(`время = ${hour}:${min}:${sec}`);
         }
     }

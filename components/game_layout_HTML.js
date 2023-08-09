@@ -14,7 +14,25 @@ export function getLayoutHTML(duplicateCardsArrSort, appEl, hour, min, sec) {
      <div class="game-cards__suits center" id="suits">${duplicateCardsArrSort.join(
          "",
      )}</div>
-    </div> `;
+    </div>  `;
     appEl.innerHTML = appHTML;
 }
+
+
+export function getModalWindowGame() {
+    let modalGameHTML = document.getElementById("modal-window-game");
+    let modalHTML = `<div class="modal">
+    <div class="modal-result-game center">
+           <img class="modal__img" src="./static/img/modal_game/celebration.svg" alt="emoji">
+           <h3 class="modal__heading">Вы выиграли</h3>
+           <p class="modal__text">Затраченное время</p>   
+           <div class="modal__time">время</div>
+           <button class="box-game__button modal__button">Начать заново</button>
+           </div>
+   </div> }`;
+   modalGameHTML.innerHTML = modalHTML;
+}
+
+
+
 
