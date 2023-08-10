@@ -15,10 +15,8 @@
         box-sizing: border-box;
         display: flex;
         flex-direction: column;
-        justify-content: center;
         align-items: center;
-        // top: 158px;
-        // position: absolute;
+        padding: 26px;
     }
     &__img {
         width: 96px;
@@ -32,17 +30,21 @@
         font-style: normal;
         font-weight: 400;
         line-height: 48px;
+        padding-top: 9px;
+        padding-bottom: 28px;     
     }
     &__text {
         font-size: 24px;
         font-style: normal;
         font-weight: 400;
-        line-height: 32px;
+        line-height: 32px;   
     }
     &__time {
-        font-size: 64px;
+        font-size: 55px;
         font-style: normal;
         font-weight: 400;
         line-height: 72px;
+        padding-top: 10px;
+        padding-bottom: 10px;
     }
 }
