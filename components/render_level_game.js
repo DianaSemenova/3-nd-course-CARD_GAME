@@ -2,11 +2,13 @@ import { shuffle } from "lodash";
 import { cardsSuitsArr } from "./array_cards_suits.js";
 import { getLayoutHTML, getModalWindowGame } from "./game_layout_HTML.js";
 import { counterTime } from "./timer.js";
+import { id } from "../index.js";
 
 export function renderLevelGame(level, appEl, renderGameDifficulty) {
-    let hour = 0;
-    let min = 0;
-    let sec = 0;
+    // let hour = 0;
+    let min = "00";
+    let sec = "00";
+
 
     let levelGame = level.value;
     let winGame = false;
@@ -31,12 +33,18 @@ export function renderLevelGame(level, appEl, renderGameDifficulty) {
 
     appEl.innerHTML = "";
 
-    setTimeout(() => {
-        counterTime(hour, min, sec, stopTimer);
-    }, 5000);
-
-    getLayoutHTML(duplicateCardsArrSort, appEl, hour, min, sec);
+    getLayoutHTML(duplicateCardsArrSort, appEl, min, sec);
     const fontGameCards = document.querySelector(".game-cards");
+    console.log(fontGameCards);
+
+    const minute = document.getElementById("min");
+    console.log(minute);
+    const second = document.getElementById("sec");
+    console.log(second);
+
+    setTimeout(() => {
+        counterTime(+min, +sec, stopTimer, minute, second);
+    }, 5000);
 
     let clickCards = true;
     let firstIndexCard = null;
@@ -85,14 +93,14 @@ export function renderLevelGame(level, appEl, renderGameDifficulty) {
                         secondIndexCard,
                         flipsСards,
                     );
-                    
+
                     counter = counter - 2;
                     if (counter === 0) {
                         winGame = !winGame;
                         fontGameCards.style.opacity = ".3";
                         getModalWindowGame(winGame);
                         stopTimer = true;
-                        counterTime(hour, min, sec, stopTimer);
+                        counterTime(+min, +sec, stopTimer, minute, second,id);
                     }
                 }
                 clickCards = !clickCards;
@@ -110,11 +118,11 @@ export function renderLevelGame(level, appEl, renderGameDifficulty) {
             alert("проиграл");
             stopTimer = true;
             console.log(stopTimer);
-            counterTime(hour, min, sec, stopTimer);
+            counterTime(+min, +sec, stopTimer, minute, second,id);
             fontGameCards.style.opacity = ".3";
             getModalWindowGame(winGame);
 
-            console.log(`время = ${hour}:${min}:${sec}`);
+            console.log(`время =${min}:${sec}`);
         }
     }
     //  });

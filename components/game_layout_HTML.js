@@ -1,7 +1,7 @@
 // import { renderGameDifficulty } from "./render.js";
 // import { renderLevelGame } from "./render_level_game.js";
 
-export function getLayoutHTML(duplicateCardsArrSort, appEl, hour, min, sec) {
+export function getLayoutHTML(duplicateCardsArrSort, appEl, min, sec) {
     const appHTML = `   
     <div class="game-cards">
      <header class="game-cards-timer">
@@ -10,7 +10,12 @@ export function getLayoutHTML(duplicateCardsArrSort, appEl, hour, min, sec) {
                 <p class="game-cards-timer__item">min</p>
                 <p class="game-cards-timer__item">sec</p>
             </div>   
-             <p class="game-cards-timer__time">${hour}:${min}:${sec}</p>         
+
+            <div class="game-cards-timer__counter">
+            <p class="game-cards-timer__time" id="min">${min}</p>
+            <span class="game-cards-timer__time">.</span>  
+             <p class="game-cards-timer__time" id="sec">${sec}</p> 
+        </div>           
          </div>
          <button class="box-game__button" id="submit-button" type="submit">Начать заново</button>
      </header>

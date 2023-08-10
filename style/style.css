@@ -129,6 +129,12 @@ body {
   justify-content: flex-end;
   gap: 57px;
 }
+.game-cards-timer__counter {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  gap: 0px;
+}
 .game-cards-timer__item {
   color: #fff;
   font-variant-numeric: lining-nums proportional-nums;

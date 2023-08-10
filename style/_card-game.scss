@@ -11,6 +11,12 @@
             justify-content: flex-end;
             gap: 57px;
         }
+        &__counter {
+            display: flex;
+            justify-content: space-between;  
+            flex-direction: row;             
+            gap: 0px;
+        }
         &__item {
             color: #fff;
             font-variant-numeric: lining-nums proportional-nums;
