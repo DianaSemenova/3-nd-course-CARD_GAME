@@ -2,17 +2,14 @@ import { shuffle } from "lodash";
 import { cardsSuitsArr } from "./array_cards_suits.js";
 import { getLayoutHTML, getModalWindowGame } from "./game_layout_HTML.js";
 import { counterTime } from "./timer.js";
-import { id } from "../index.js";
 
 export function renderLevelGame(level, appEl, renderGameDifficulty) {
-    // let hour = 0;
     let min = "00";
     let sec = "00";
 
-
     let levelGame = level.value;
     let winGame = false;
-    let stopTimer = false;
+    let id;
 
     const cardsFlipSide = [];
     const cardsSuitsArraySort = shuffle(cardsSuitsArr).slice(0, levelGame / 2);
@@ -43,7 +40,7 @@ export function renderLevelGame(level, appEl, renderGameDifficulty) {
     console.log(second);
 
     setTimeout(() => {
-        counterTime(+min, +sec, stopTimer, minute, second);
+        id = counterTime(+min, +sec, minute, second);
     }, 5000);
 
     let clickCards = true;
@@ -99,8 +96,6 @@ export function renderLevelGame(level, appEl, renderGameDifficulty) {
                         winGame = !winGame;
                         fontGameCards.style.opacity = ".3";
                         getModalWindowGame(winGame);
-                        stopTimer = true;
-                        counterTime(+min, +sec, stopTimer, minute, second,id);
                     }
                 }
                 clickCards = !clickCards;
@@ -116,13 +111,11 @@ export function renderLevelGame(level, appEl, renderGameDifficulty) {
             flipsСards();
         } else {
             alert("проиграл");
-            stopTimer = true;
-            console.log(stopTimer);
-            counterTime(+min, +sec, stopTimer, minute, second,id);
             fontGameCards.style.opacity = ".3";
             getModalWindowGame(winGame);
 
-            console.log(`время =${min}:${sec}`);
+            clearInterval(id);
+            //console.log(`время =${min}:${sec}`);
         }
     }
     //  });

@@ -12,9 +12,9 @@ export function getLayoutHTML(duplicateCardsArrSort, appEl, min, sec) {
             </div>   
 
             <div class="game-cards-timer__counter">
-            <p class="game-cards-timer__time" id="min">${min}</p>
+            <span class="game-cards-timer__time" id="min">${min}</span>
             <span class="game-cards-timer__time">.</span>  
-             <p class="game-cards-timer__time" id="sec">${sec}</p> 
+             <span class="game-cards-timer__time" id="sec">${sec}</span> 
         </div>           
          </div>
          <button class="box-game__button" id="submit-button" type="submit">Начать заново</button>
@@ -38,7 +38,7 @@ export function getModalWindowGame(winGame) {
                winGame ? "Вы выиграли!" : "Вы проиграли"
            }</h3>
            <p class="modal__text">Затраченное время</p>   
-           <div class="modal__time">0:0:0</div>
+           <div class="modal__time"></div>
            <button class="box-game__button modal__button">Начать заново</button>
            </div>`;
 
