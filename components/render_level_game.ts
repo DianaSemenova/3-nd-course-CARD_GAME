@@ -7,6 +7,12 @@ import { renderGameDifficulty } from "./render";
 export function renderLevelGame(levelGame: number, appEl: HTMLElement | null) {
     const min: number = 0;
     const sec: number = 0;
+    let currentDate: Date;
+    let combDate: string;
+
+    function getCurrentDate() {
+        return (currentDate = new Date());
+    }
 
     let winGame: boolean = false;
     let id: NodeJS.Timer;
@@ -30,7 +36,7 @@ export function renderLevelGame(levelGame: number, appEl: HTMLElement | null) {
 
     if (appEl) {
         appEl.innerHTML = "";
-        getLayoutHTML(duplicateCardsArrSort, appEl, min, sec);
+        getLayoutHTML(duplicateCardsArrSort, appEl);
     }
 
     // const fontGameCards: HTMLElement | null = document.querySelector(".game-cards");
@@ -45,6 +51,7 @@ export function renderLevelGame(levelGame: number, appEl: HTMLElement | null) {
 
     setTimeout(() => {
         id = counterTime(min, sec, minute, second);
+        getCurrentDate();
     }, 5000);
 
     let clickCards: boolean = true;
@@ -105,6 +112,8 @@ export function renderLevelGame(levelGame: number, appEl: HTMLElement | null) {
                         getModalWindowGame(
                             winGame,
                             modalGameHTML,
+                            currentDate,
+                            combDate,
                         );
                         clearInterval(id);
                     }
@@ -123,7 +132,7 @@ export function renderLevelGame(levelGame: number, appEl: HTMLElement | null) {
         } else {
             (fontGameCards as HTMLElement).style.opacity = ".3";
             (modalGameHTML as HTMLElement).style.display = "block";
-            getModalWindowGame(winGame, modalGameHTML);
+            getModalWindowGame(winGame, modalGameHTML, currentDate, combDate);
             clearInterval(id);
         }
     }

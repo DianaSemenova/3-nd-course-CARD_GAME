@@ -1,11 +1,8 @@
-//import { renderLevelGame } from "./render_level_game";
 import { renderGameDifficulty } from "./render";
 
 export function getLayoutHTML(
     duplicateCardsArrSort: Array<string>,
     appEl: HTMLElement,
-    min: number,
-    sec: number,
 ) {
     const appHTML = `   
     <div class="game-cards">
@@ -17,9 +14,9 @@ export function getLayoutHTML(
             </div>   
 
             <div class="game-cards-timer__counter">
-            <span class="game-cards-timer__time" id="min">${min}</span>
+            <span class="game-cards-timer__time" id="min">00</span>
             <span class="game-cards-timer__time">.</span>  
-             <span class="game-cards-timer__time" id="sec">${sec}</span> 
+             <span class="game-cards-timer__time" id="sec">00</span> 
         </div>           
          </div>
          <button class="box-game__button" id="submit-button" type="submit">Начать заново</button>
@@ -34,7 +31,33 @@ export function getLayoutHTML(
 export function getModalWindowGame(
     winGame: boolean,
     modalGameHTML: HTMLElement | null,
+    currentDate: Date,
+    combDate: string,
 ) {
+    const minutModal: number = 0;
+    const secondModal: number = 0;
+
+    function getTimeModalWindow(minutModal: number, secondModal: number) {
+        const endDate = new Date();
+        const diffDate = endDate.getTime() - currentDate.getTime();
+
+        minutModal = Math.floor(diffDate / 60000);
+        secondModal = Math.floor((diffDate % 60000) / 1000);
+
+        combDate = `${
+            minutModal < 10
+                ? "0" + minutModal.toString()
+                : minutModal.toString()
+        }:${
+            secondModal < 10
+                ? "0" + secondModal.toString()
+                : secondModal.toString()
+        }`;
+        return combDate;
+    }
+    getTimeModalWindow(minutModal, secondModal);
+
+    console.log(combDate);
 
     const modalHTML = `<div class="modal-result-game">
     ${
@@ -46,16 +69,20 @@ export function getModalWindowGame(
                winGame ? "Вы выиграли!" : "Вы проиграли"
            }</h3>
            <p class="modal__text">Затраченное время</p>   
-           <div class="modal__time"></div>
+           <div class="modal__time">${combDate}</div>
            <button class="box-game__button modal__button">Начать заново</button>
            </div>`;
 
-           if(modalGameHTML){
-            modalGameHTML.innerHTML = modalHTML;
+    if (modalGameHTML) {
+        modalGameHTML.innerHTML = modalHTML;
 
-            (document.querySelector(".modal__button") as HTMLElement).addEventListener("click", () => {
-                modalGameHTML.style.display = "none";
-                renderGameDifficulty();
-            });
-           }
+        (
+            document.querySelector(".modal__button") as HTMLElement
+        ).addEventListener("click", () => {
+            modalGameHTML.style.display = "none";
+            renderGameDifficulty();
+        });
+    }
+    const modalText = document.querySelector(".modal__text");
+    console.log(modalText);
 }
