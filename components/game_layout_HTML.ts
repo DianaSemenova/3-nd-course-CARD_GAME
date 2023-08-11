@@ -1,4 +1,12 @@
-export function getLayoutHTML(duplicateCardsArrSort, appEl, min, sec) {
+//import { renderLevelGame } from "./render_level_game";
+import { renderGameDifficulty } from "./render";
+
+export function getLayoutHTML(
+    duplicateCardsArrSort: Array<string>,
+    appEl: HTMLElement,
+    min: number,
+    sec: number,
+) {
     const appHTML = `   
     <div class="game-cards">
      <header class="game-cards-timer">
@@ -23,8 +31,12 @@ export function getLayoutHTML(duplicateCardsArrSort, appEl, min, sec) {
     appEl.innerHTML = appHTML;
 }
 
-export function getModalWindowGame(winGame,modalGameHTML,renderLevelGame,renderGameDifficulty) {
-    let modalHTML = `<div class="modal-result-game">
+export function getModalWindowGame(
+    winGame: boolean,
+    modalGameHTML: HTMLElement | null,
+) {
+
+    const modalHTML = `<div class="modal-result-game">
     ${
         winGame
             ? '<img class="modal__img" src="./static/img/modal_game/celebration.svg" alt="emoji">'
@@ -38,10 +50,12 @@ export function getModalWindowGame(winGame,modalGameHTML,renderLevelGame,renderG
            <button class="box-game__button modal__button">Начать заново</button>
            </div>`;
 
-    modalGameHTML.innerHTML = modalHTML;
+           if(modalGameHTML){
+            modalGameHTML.innerHTML = modalHTML;
 
-    document.querySelector(".modal__button").addEventListener("click", () => {
-        modalGameHTML.style.display="none";
-        renderGameDifficulty(renderLevelGame);
-    });
+            (document.querySelector(".modal__button") as HTMLElement).addEventListener("click", () => {
+                modalGameHTML.style.display = "none";
+                renderGameDifficulty();
+            });
+           }
 }
