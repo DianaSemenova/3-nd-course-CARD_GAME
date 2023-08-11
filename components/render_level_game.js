@@ -33,6 +33,7 @@ export function renderLevelGame(level, appEl, renderGameDifficulty) {
     getLayoutHTML(duplicateCardsArrSort, appEl, min, sec);
     const fontGameCards = document.querySelector(".game-cards");
     console.log(fontGameCards);
+    let modalGameHTML = document.getElementById("modal-window-game");
 
     const minute = document.getElementById("min");
     console.log(minute);
@@ -95,7 +96,14 @@ export function renderLevelGame(level, appEl, renderGameDifficulty) {
                     if (counter === 0) {
                         winGame = !winGame;
                         fontGameCards.style.opacity = ".3";
-                        getModalWindowGame(winGame);
+                        modalGameHTML.style.display = "block";
+                        getModalWindowGame(
+                            winGame,
+                            modalGameHTML,
+                            renderLevelGame,
+                            renderGameDifficulty,
+                        );
+                        clearInterval(id);
                     }
                 }
                 clickCards = !clickCards;
@@ -110,12 +118,15 @@ export function renderLevelGame(level, appEl, renderGameDifficulty) {
         if (cardsFlipSide[firstIndexCard] === cardsFlipSide[secondIndexCard]) {
             flipsСards();
         } else {
-            alert("проиграл");
             fontGameCards.style.opacity = ".3";
-            getModalWindowGame(winGame);
-
+            modalGameHTML.style.display = "block";
+            getModalWindowGame(
+                winGame,
+                modalGameHTML,
+                renderLevelGame,
+                renderGameDifficulty,
+            );
             clearInterval(id);
-            //console.log(`время =${min}:${sec}`);
         }
     }
     //  });

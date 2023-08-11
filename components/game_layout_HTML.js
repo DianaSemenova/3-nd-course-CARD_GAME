@@ -1,6 +1,3 @@
-// import { renderGameDifficulty } from "./render.js";
-// import { renderLevelGame } from "./render_level_game.js";
-
 export function getLayoutHTML(duplicateCardsArrSort, appEl, min, sec) {
     const appHTML = `   
     <div class="game-cards">
@@ -26,8 +23,7 @@ export function getLayoutHTML(duplicateCardsArrSort, appEl, min, sec) {
     appEl.innerHTML = appHTML;
 }
 
-export function getModalWindowGame(winGame) {
-    let modalGameHTML = document.getElementById("modal-window-game");
+export function getModalWindowGame(winGame,modalGameHTML,renderLevelGame,renderGameDifficulty) {
     let modalHTML = `<div class="modal-result-game">
     ${
         winGame
@@ -44,7 +40,8 @@ export function getModalWindowGame(winGame) {
 
     modalGameHTML.innerHTML = modalHTML;
 
-    // document.querySelector(".modal__button").addEventListener("click", () => {
-    //     renderGameDifficulty(renderLevelGame);
-    // });
+    document.querySelector(".modal__button").addEventListener("click", () => {
+        modalGameHTML.style.display="none";
+        renderGameDifficulty(renderLevelGame);
+    });
 }
