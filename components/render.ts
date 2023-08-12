@@ -39,13 +39,12 @@ export function renderGameDifficulty() {
                 );
 
                 for (const level of levels) {
-                    if ((level as HTMLInputElement).checked) {   
+                    if ((level as HTMLInputElement).checked) {
                         const levelGame: number = Number(
                             (level as HTMLInputElement).value,
-                        )             
+                        );
                         renderLevelGame(levelGame, appEl);
                     }
-
                 }
             });
         }
