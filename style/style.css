@@ -1,212 +1,212 @@
 @font-face {
-    font-family: StratosSkyeng;
-    src: url("../static/fonts/stratosskyengweb-regular.woff") format("woff");
-    font-style: normal;
-    font-weight: normal;
+  font-family: StratosSkyeng;
+  src: url("../static/fonts/stratosskyengweb-regular.woff") format("woff");
+  font-style: normal;
+  font-weight: normal;
 }
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 body {
-    background: #004980;
-    font-family: StratosSkyeng, sans-serif;
+  background: #004980;
+  font-family: StratosSkyeng, sans-serif;
 }
 
 .center {
-    padding-left: calc(50% - 250px);
-    padding-right: calc(50% - 250px);
+  padding-left: calc(50% - 250px);
+  padding-right: calc(50% - 250px);
 }
 
 .top {
-    padding-top: 158px;
+  padding-top: 158px;
 }
 
 .box-game {
-    width: 480px;
-    height: 459px;
-    border-radius: 12px;
-    background: #c2f5ff;
-    padding: 50px;
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: column;
-    align-content: center;
-    gap: 48px;
+  width: 480px;
+  height: 459px;
+  border-radius: 12px;
+  background: #c2f5ff;
+  padding: 50px;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  align-content: center;
+  gap: 48px;
 }
 .box-game__title {
-    color: #004980;
-    text-align: center;
-    font-variant-numeric: lining-nums proportional-nums;
-    font-size: 40px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: 48px;
+  color: #004980;
+  text-align: center;
+  font-variant-numeric: lining-nums proportional-nums;
+  font-size: 40px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 48px;
 }
 .box-game__button {
-    background-color: #7ac100;
-    width: 246px;
-    height: 50px;
-    color: #fff;
-    align-self: center;
-    font-variant-numeric: lining-nums proportional-nums;
-    font-family: StratosSkyeng, sans-serif;
-    font-size: 24px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: 32px;
-    border: none;
-    border-radius: 12px;
-    transition: all 0.2s;
+  background-color: #7ac100;
+  width: 246px;
+  height: 50px;
+  color: #fff;
+  align-self: center;
+  font-variant-numeric: lining-nums proportional-nums;
+  font-family: StratosSkyeng, sans-serif;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 32px;
+  border: none;
+  border-radius: 12px;
+  transition: all 0.2s;
 }
 .box-game__button:hover {
-    transform: scale(1.1);
-    border: 2px solid #fff;
+  transform: scale(1.1);
+  border: 2px solid #fff;
 }
 .box-difficulty-level {
-    display: flex;
-    gap: 26px;
+  display: flex;
+  gap: 26px;
 }
 .box-difficulty-level__button {
-    width: 98px;
-    height: 98px;
-    border-radius: 12px;
-    border: none;
-    color: #0080c1;
-    text-align: center;
-    font-family: StratosSkyeng, sans-serif;
-    font-size: 64px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: 72px;
-    background-color: #fff;
+  width: 98px;
+  height: 98px;
+  border-radius: 12px;
+  border: none;
+  color: #0080c1;
+  text-align: center;
+  font-family: StratosSkyeng, sans-serif;
+  font-size: 64px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 72px;
+  background-color: #fff;
 }
 .box-difficulty-level__radio {
-    display: none;
+  display: none;
 }
 .box-difficulty-level__radio:checked + label {
-    background-color: #004980;
-    border: 3px solid #004980;
-    color: #fff;
-    transform: scale(1.2);
+  background-color: #004980;
+  border: 3px solid #004980;
+  color: #fff;
+  transform: scale(1.2);
 }
 .box-difficulty-level__label {
-    width: 98px;
-    height: 98px;
-    border-radius: 12px;
-    border: none;
-    color: #0080c1;
-    font-family: StratosSkyeng, sans-serif;
-    font-size: 64px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: 72px;
-    background-color: #fff;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    transition: all 0.3s;
+  width: 98px;
+  height: 98px;
+  border-radius: 12px;
+  border: none;
+  color: #0080c1;
+  font-family: StratosSkyeng, sans-serif;
+  font-size: 64px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 72px;
+  background-color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.3s;
 }
 .box-difficulty-level__label:hover {
-    background-color: #c4e8f0;
-    border: 1px solid #004980;
-    transform: scale(1.1);
+  background-color: #c4e8f0;
+  border: 1px solid #004980;
+  transform: scale(1.1);
 }
 
 .game-cards {
-    padding: 22px;
-    display: flex;
-    flex-direction: column;
+  padding: 22px;
+  display: flex;
+  flex-direction: column;
 }
 .game-cards-timer {
-    display: flex;
-    justify-content: space-between;
+  display: flex;
+  justify-content: space-between;
 }
 .game-cards-timer__init {
-    display: flex;
-    justify-content: flex-end;
-    gap: 57px;
+  display: flex;
+  justify-content: flex-end;
+  gap: 57px;
 }
 .game-cards-timer__counter {
-    display: flex;
-    justify-content: space-between;
-    flex-direction: row;
-    gap: 0px;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  gap: 0px;
 }
 .game-cards-timer__item {
-    color: #fff;
-    font-variant-numeric: lining-nums proportional-nums;
-    font-family: StratosSkyeng, sans-serif;
-    font-size: 16px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: 32px;
+  color: #fff;
+  font-variant-numeric: lining-nums proportional-nums;
+  font-family: StratosSkyeng, sans-serif;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 32px;
 }
 .game-cards-timer__time {
-    color: #fff;
-    font-family: StratosSkyeng, sans-serif;
-    font-size: 64px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: 72px;
+  color: #fff;
+  font-family: StratosSkyeng, sans-serif;
+  font-size: 64px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 72px;
 }
 .game-cards__suits {
-    padding: 48px;
-    display: grid;
-    grid-template-columns: repeat(6, auto);
-    justify-content: center;
-    gap: 15px;
+  padding: 48px;
+  display: grid;
+  grid-template-columns: repeat(6, auto);
+  justify-content: center;
+  gap: 15px;
 }
 
 .modal {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    top: 158px;
-    left: 0px;
-    right: 0px;
-    position: absolute;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  top: 158px;
+  left: 0px;
+  right: 0px;
+  position: absolute;
 }
 .modal-result-game {
-    width: 400px;
-    height: 410px;
-    border-radius: 12px;
-    background: #c2f5ff;
-    box-sizing: border-box;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 26px;
+  width: 400px;
+  height: 410px;
+  border-radius: 12px;
+  background: #c2f5ff;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 26px;
 }
 .modal__img {
-    width: 96px;
-    height: 96px;
+  width: 96px;
+  height: 96px;
 }
 .modal__heading {
-    color: #004980;
-    font-variant-numeric: lining-nums proportional-nums;
-    font-family: StratosSkyeng, sans-serif;
-    font-size: 40px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: 48px;
-    padding-top: 9px;
-    padding-bottom: 28px;
+  color: #004980;
+  font-variant-numeric: lining-nums proportional-nums;
+  font-family: StratosSkyeng, sans-serif;
+  font-size: 40px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 48px;
+  padding-top: 9px;
+  padding-bottom: 20px;
 }
 .modal__text {
-    font-size: 24px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: 32px;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 32px;
 }
 .modal__time {
-    font-size: 55px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: 72px;
-    padding-top: 10px;
-    padding-bottom: 10px;
-} /*# sourceMappingURL=style.css.map */
+  font-size: 55px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 72px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}/*# sourceMappingURL=style.css.map */

@@ -39,12 +39,11 @@ export function renderLevelGame(levelGame: number, appEl: HTMLElement | null) {
         getLayoutHTML(duplicateCardsArrSort, appEl);
     }
 
-    // const fontGameCards: HTMLElement | null = document.querySelector(".game-cards");
-    // console.log(fontGameCards);
+    const fontGameCards: HTMLElement | null =
+        document.querySelector(".game-cards");
 
-    const fontGameCards = document.querySelector(".game-cards");
-    console.log(fontGameCards);
-    const modalGameHTML = document.getElementById("modal-window-game");
+    const modalGameHTML: HTMLElement | null =
+        document.getElementById("modal-window-game");
 
     const minute = document.getElementById("min");
     const second = document.getElementById("sec");
@@ -69,9 +68,11 @@ export function renderLevelGame(levelGame: number, appEl: HTMLElement | null) {
 
     function flipsСards() {
         //document.addEventListener("DOMContentLoaded", () => {
-        (
-            document.getElementById("suits") as HTMLElement
-        ).innerHTML = `${cardsFlipSide.join("")}`;
+
+        const suits: HTMLElement | null = document.getElementById("suits");
+        if (suits) {
+            suits.innerHTML = `${cardsFlipSide.join("")}`;
+        }
 
         const reverseSlideCards = document.querySelectorAll(
             ".game-cards__flip-side",
@@ -79,47 +80,61 @@ export function renderLevelGame(levelGame: number, appEl: HTMLElement | null) {
         const reverseSlideCardsArr = Array.from(reverseSlideCards);
 
         for (const reverseSlideCard of reverseSlideCardsArr) {
-            reverseSlideCard.addEventListener("click", () => {
-                const cardsIndex = Number(
-                    (reverseSlideCard as HTMLElement).dataset.index,
-                );
-                if (clickCards) {
-                    cardsFlipSide[cardsIndex] =
-                        duplicateCardsArrSort[cardsIndex];
-                    firstIndexCard = cardsIndex;
-                    (
-                        document.getElementById("suits") as HTMLElement
-                    ).innerHTML = `${cardsFlipSide.join("")}`;
+            if (reverseSlideCard instanceof HTMLElement) {
+                reverseSlideCard.addEventListener("click", () => {
+                    const cardsIndex = Number(reverseSlideCard.dataset.index);
 
-                    flipsСards();
-                } else {
-                    cardsFlipSide[cardsIndex] =
-                        duplicateCardsArrSort[cardsIndex];
+                    // for (const reverseSlideCard of reverseSlideCardsArr) {
+                    //     reverseSlideCard.addEventListener("click", () => {
+                    //         const cardsIndex = Number(
+                    //             (reverseSlideCard as HTMLElement).dataset.index,
+                    //         );
 
-                    secondIndexCard = cardsIndex;
+                    const suits: HTMLElement | null =
+                            document.getElementById("suits");
 
-                    (
-                        document.getElementById("suits") as HTMLElement
-                    ).innerHTML = `${cardsFlipSide.join("")}`;
+                    if (clickCards) {
+                        cardsFlipSide[cardsIndex] =
+                            duplicateCardsArrSort[cardsIndex];
+                        firstIndexCard = cardsIndex;
+                    
+                        if (suits) {
+                            suits.innerHTML = `${cardsFlipSide.join("")}`;
+                        }
 
-                    comparingTwoCard(firstIndexCard, secondIndexCard);
+                        flipsСards();
+                    } else {
+                        cardsFlipSide[cardsIndex] =
+                            duplicateCardsArrSort[cardsIndex];
 
-                    counter = counter - 2;
-                    if (counter === 0) {
-                        winGame = !winGame;
-                        (fontGameCards as HTMLElement).style.opacity = ".3";
-                        (modalGameHTML as HTMLElement).style.display = "block";
-                        getModalWindowGame(
-                            winGame,
-                            modalGameHTML,
-                            currentDate,
-                            combDate,
-                        );
-                        clearInterval(id);
+                        secondIndexCard = cardsIndex;
+                        
+                        if (suits) {
+                            suits.innerHTML = `${cardsFlipSide.join("")}`;
+                        }
+
+                        comparingTwoCard(firstIndexCard, secondIndexCard);
+
+                        counter = counter - 2;
+                        if (counter === 0) {
+                            winGame = !winGame;
+                            if (fontGameCards && modalGameHTML) {
+                                fontGameCards.style.opacity = ".3";
+                                modalGameHTML.style.display = "block";
+                            }
+
+                            getModalWindowGame(
+                                winGame,
+                                modalGameHTML,
+                                currentDate,
+                                combDate,
+                            );
+                            clearInterval(id);
+                        }
                     }
-                }
-                clickCards = !clickCards;
-            });
+                    clickCards = !clickCards;
+                });
+            }
         }
         //});
     }
@@ -130,8 +145,11 @@ export function renderLevelGame(levelGame: number, appEl: HTMLElement | null) {
         if (cardsFlipSide[firstIndexCard] === cardsFlipSide[secondIndexCard]) {
             flipsСards();
         } else {
-            (fontGameCards as HTMLElement).style.opacity = ".3";
-            (modalGameHTML as HTMLElement).style.display = "block";
+            if (fontGameCards && modalGameHTML) {
+                fontGameCards.style.opacity = ".3";
+                modalGameHTML.style.display = "block";
+            }
+
             getModalWindowGame(winGame, modalGameHTML, currentDate, combDate);
             clearInterval(id);
         }
