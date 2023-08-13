@@ -2,6 +2,7 @@
     padding: 22px;
     display: flex;
     flex-direction: column;
+    //opacity: .3;
     &-timer {
         display: flex;
         justify-content: space-between;
@@ -9,6 +10,12 @@
             display: flex;
             justify-content: flex-end;
             gap: 57px;
+        }
+        &__counter {
+            display: flex;
+            justify-content: space-between;
+            flex-direction: row;
+            gap: 0px;
         }
         &__item {
             color: #fff;

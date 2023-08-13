@@ -4,7 +4,11 @@
         "es6": true,
         "node": true
     },
-    "extends": ["eslint:recommended", "prettier"],
+    "extends": [
+        "eslint:recommended",
+        "prettier",
+        "plugin:@typescript-eslint/recommended"
+    ],
     "plugins": ["prettier"],
     "parserOptions": {
         "sourceType": "module",
@@ -13,6 +17,7 @@
     "ignorePatterns": ["dist/", "node_modules/"],
     "rules": {
         "strict": "error",
-        "prettier/prettier": 0
+        "prettier/prettier": 0,
+        "@typescript-eslint/no-var-requires": "off"
     }
 }

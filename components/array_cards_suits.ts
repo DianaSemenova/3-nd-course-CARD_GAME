@@ -1,4 +1,4 @@
-export const cardsSuitsArr = [
+export const cardsSuitsArr: Array<string> = [
     `<img class="game-cards__flip-side" src="../static/img/6 бубны.png">`,
     `<img class="game-cards__flip-side" src="../static/img/6 крести.png">`,
     `<img class="game-cards__flip-side" src="../static/img/6 пики.png">`,

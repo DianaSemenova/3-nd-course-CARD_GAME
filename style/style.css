@@ -129,6 +129,12 @@ body {
   justify-content: flex-end;
   gap: 57px;
 }
+.game-cards-timer__counter {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  gap: 0px;
+}
 .game-cards-timer__item {
   color: #fff;
   font-variant-numeric: lining-nums proportional-nums;
@@ -152,4 +158,55 @@ body {
   grid-template-columns: repeat(6, auto);
   justify-content: center;
   gap: 15px;
+}
+
+.modal {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  top: 158px;
+  left: 0px;
+  right: 0px;
+  position: absolute;
+}
+.modal-result-game {
+  width: 400px;
+  height: 410px;
+  border-radius: 12px;
+  background: #c2f5ff;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 26px;
+}
+.modal__img {
+  width: 96px;
+  height: 96px;
+}
+.modal__heading {
+  color: #004980;
+  font-variant-numeric: lining-nums proportional-nums;
+  font-family: StratosSkyeng, sans-serif;
+  font-size: 40px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 48px;
+  padding-top: 9px;
+  padding-bottom: 20px;
+}
+.modal__text {
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 32px;
+}
+.modal__time {
+  font-size: 55px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 72px;
+  padding-top: 10px;
+  padding-bottom: 10px;
 }/*# sourceMappingURL=style.css.map */

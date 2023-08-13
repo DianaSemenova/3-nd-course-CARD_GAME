@@ -12,7 +12,8 @@
         "lint:js": "eslint ./**/*.js",
         "lint:scss": "stylelint ./style/**/*.scss",
         "prepare": "husky install",
-        "lint": "npm run lint:js && npm run lint:scss"
+        "lint": "npm run lint:js && npm run lint:scss && npm run lint:ts",
+        "lint:ts": "tsc --noEmit"
     },
     "repository": {
         "type": "git",
@@ -27,10 +28,12 @@
     "dependencies": {
         "http-server": "^14.1.1",
         "lodash": "^4.17.21",
-        "postcss-scss": "^4.0.6",
-        "webpack-dev-server": "^4.15.1"
+        "postcss-scss": "^4.0.6"
     },
     "devDependencies": {
+        "@types/lodash": "^4.14.197",
+        "@typescript-eslint/eslint-plugin": "^6.3.0",
+        "@typescript-eslint/parser": "^6.3.0",
         "axios": "^1.4.0",
         "copy-webpack-plugin": "^11.0.0",
         "css-loader": "^6.8.1",
@@ -47,7 +50,10 @@
         "stylelint": "^15.10.2",
         "stylelint-config-standard": "^34.0.0",
         "stylelint-prettier": "^4.0.2",
+        "ts-loader": "^9.4.4",
+        "typescript": "^5.1.6",
         "webpack": "^5.88.2",
-        "webpack-cli": "^5.1.4"
+        "webpack-cli": "^5.1.4",
+        "webpack-dev-server": "^4.15.1"
     }
 }
