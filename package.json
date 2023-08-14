@@ -4,7 +4,7 @@
     "description": "Карточная игра. Смысл игры: нужно выбрать все пары карт.",
     "main": "index.js",
     "scripts": {
-        "test": "echo \"Error: no test specified\" && exit 1",
+        "test": "jest",
         "dev": "webpack --mode development --watch",
         "build": "SET NODE_ENV='production' && webpack",
         "start": "webpack-dev-server --open",
@@ -43,6 +43,7 @@
         "eslint-plugin-prettier": "^5.0.0",
         "html-webpack-plugin": "^5.5.3",
         "husky": "^8.0.3",
+        "jest": "^29.6.2",
         "mini-css-extract-plugin": "^2.7.6",
         "prettier": "^3.0.0",
         "sass": "^1.64.2",
