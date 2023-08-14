@@ -9,7 +9,8 @@
         "prettier",
         "plugin:@typescript-eslint/recommended"
     ],
-    "plugins": ["prettier"],
+    "parser": "@typescript-eslint/parser",
+    "plugins": ["prettier", "@typescript-eslint"],
     "parserOptions": {
         "sourceType": "module",
         "ecmaVersion": 2020
@@ -19,5 +20,6 @@
         "strict": "error",
         "prettier/prettier": 0,
         "@typescript-eslint/no-var-requires": "off"
-    }
+    },
+    "root": true
 }

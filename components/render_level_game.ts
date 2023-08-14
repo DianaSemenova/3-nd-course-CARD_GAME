@@ -91,13 +91,13 @@ export function renderLevelGame(levelGame: number, appEl: HTMLElement | null) {
                     //         );
 
                     const suits: HTMLElement | null =
-                            document.getElementById("suits");
+                        document.getElementById("suits");
 
                     if (clickCards) {
                         cardsFlipSide[cardsIndex] =
                             duplicateCardsArrSort[cardsIndex];
                         firstIndexCard = cardsIndex;
-                    
+
                         if (suits) {
                             suits.innerHTML = `${cardsFlipSide.join("")}`;
                         }
@@ -108,7 +108,7 @@ export function renderLevelGame(levelGame: number, appEl: HTMLElement | null) {
                             duplicateCardsArrSort[cardsIndex];
 
                         secondIndexCard = cardsIndex;
-                        
+
                         if (suits) {
                             suits.innerHTML = `${cardsFlipSide.join("")}`;
                         }
