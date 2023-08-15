@@ -87,11 +87,10 @@ export function renderLevelGame(levelGame: number, appEl: HTMLElement | null) {
                     const suits: HTMLElement | null =
                         document.getElementById("suits");
 
-                    if (
-                        clickCards &&
-                        cardsFlipSide[cardsIndex] !=
-                            duplicateCardsArrSort[cardsIndex]
-                    ) {
+                        console.log(cardsFlipSide[cardsIndex]);
+                        console.log(duplicateCardsArrSort[cardsIndex]);
+
+                    if (clickCards) {
                         cardsFlipSide[cardsIndex] =
                             duplicateCardsArrSort[cardsIndex];
                         firstIndexCard = cardsIndex;
@@ -101,10 +100,7 @@ export function renderLevelGame(levelGame: number, appEl: HTMLElement | null) {
                         }
 
                         flipsСards();
-                    } else if (
-                        cardsFlipSide[cardsIndex] !=
-                        duplicateCardsArrSort[cardsIndex]
-                    ) {
+                    } else {
                         cardsFlipSide[cardsIndex] =
                             duplicateCardsArrSort[cardsIndex];
 
@@ -144,6 +140,8 @@ export function renderLevelGame(levelGame: number, appEl: HTMLElement | null) {
 
     function comparingTwoCard(firstIndexCard: number, secondIndexCard: number) {
         if (cardsFlipSide[firstIndexCard] === cardsFlipSide[secondIndexCard]) {
+            firstIndexCard = 0;
+            secondIndexCard = 0;
             flipsСards();
         } else {
             if (fontGameCards && modalGameHTML) {
