@@ -17,12 +17,13 @@ export function renderLevelGame(levelGame: number, appEl: HTMLElement | null) {
     let winGame: boolean = false;
     let id: NodeJS.Timer;
 
-    const cardsFlipSide: Array<string> = [];
+  
     const cardsSuitsArraySort = shuffle(cardsSuitsArr).slice(0, levelGame / 2);
     const duplicateCardsArrSort = shuffle(
         cardsSuitsArraySort.concat(cardsSuitsArraySort),
     );
 
+    const cardsFlipSide: Array<string> = [];
     function getCardsFlipSideArr(levelGame: number) {
         for (let i = 0; i < levelGame; i++) {
             cardsFlipSide.push(
@@ -84,11 +85,6 @@ export function renderLevelGame(levelGame: number, appEl: HTMLElement | null) {
                 reverseSlideCard.addEventListener("click", () => {
                     const cardsIndex = Number(reverseSlideCard.dataset.index);
 
-                    // for (const reverseSlideCard of reverseSlideCardsArr) {
-                    //     reverseSlideCard.addEventListener("click", () => {
-                    //         const cardsIndex = Number(
-                    //             (reverseSlideCard as HTMLElement).dataset.index,
-                    //         );
 
                     const suits: HTMLElement | null =
                         document.getElementById("suits");
