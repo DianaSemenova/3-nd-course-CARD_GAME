@@ -54,8 +54,8 @@ export function renderLevelGame(levelGame: number, appEl: HTMLElement | null) {
     }, 5000);
 
     let clickCards: boolean = true;
-    let firstIndexCard: number;
-    let secondIndexCard: number;
+    let firstIndexCard: number | null = null;
+    let secondIndexCard: number | null = null;
     let counter: number = levelGame;
 
     const startOverGameButtons: HTMLElement | null =
@@ -87,10 +87,11 @@ export function renderLevelGame(levelGame: number, appEl: HTMLElement | null) {
                     const suits: HTMLElement | null =
                         document.getElementById("suits");
 
-                        console.log(cardsFlipSide[cardsIndex]);
-                        console.log(duplicateCardsArrSort[cardsIndex]);
+                    console.log(cardsFlipSide[cardsIndex]);
+                    console.log(duplicateCardsArrSort[cardsIndex]);
 
-                    if (clickCards) {
+                    if (clickCards && cardsFlipSide[cardsIndex] !=
+                        duplicateCardsArrSort[cardsIndex]) {
                         cardsFlipSide[cardsIndex] =
                             duplicateCardsArrSort[cardsIndex];
                         firstIndexCard = cardsIndex;
@@ -100,7 +101,8 @@ export function renderLevelGame(levelGame: number, appEl: HTMLElement | null) {
                         }
 
                         flipsСards();
-                    } else {
+                    } else if (cardsFlipSide[cardsIndex] !=
+                        duplicateCardsArrSort[cardsIndex]) {
                         cardsFlipSide[cardsIndex] =
                             duplicateCardsArrSort[cardsIndex];
 
@@ -138,19 +140,32 @@ export function renderLevelGame(levelGame: number, appEl: HTMLElement | null) {
 
     setTimeout(flipsСards, 5000);
 
-    function comparingTwoCard(firstIndexCard: number, secondIndexCard: number) {
-        if (cardsFlipSide[firstIndexCard] === cardsFlipSide[secondIndexCard]) {
-            firstIndexCard = 0;
-            secondIndexCard = 0;
-            flipsСards();
-        } else {
-            if (fontGameCards && modalGameHTML) {
-                fontGameCards.style.opacity = ".3";
-                modalGameHTML.style.display = "block";
+    function comparingTwoCard(
+        firstIndexCard: number | null,
+        secondIndexCard: number | null,
+    ) {
+        if (firstIndexCard != null && secondIndexCard != null) {
+            if (
+                cardsFlipSide[firstIndexCard] === cardsFlipSide[secondIndexCard]
+            ) {
+                firstIndexCard = null;
+                secondIndexCard = null;
+                flipsСards();
+            } else {
+                if (fontGameCards && modalGameHTML) {
+                    fontGameCards.style.opacity = ".3";
+                    modalGameHTML.style.display = "block";
+                }
+
+                getModalWindowGame(
+                    winGame,
+                    modalGameHTML,
+                    currentDate,
+                    combDate,
+                );
+                clearInterval(id);
             }
 
-            getModalWindowGame(winGame, modalGameHTML, currentDate, combDate);
-            clearInterval(id);
         }
     }
     //  });
