@@ -17,7 +17,6 @@ export function renderLevelGame(levelGame: number, appEl: HTMLElement | null) {
     let winGame: boolean = false;
     let id: NodeJS.Timer;
 
-  
     const cardsSuitsArraySort = shuffle(cardsSuitsArr).slice(0, levelGame / 2);
     const duplicateCardsArrSort = shuffle(
         cardsSuitsArraySort.concat(cardsSuitsArraySort),
@@ -85,11 +84,14 @@ export function renderLevelGame(levelGame: number, appEl: HTMLElement | null) {
                 reverseSlideCard.addEventListener("click", () => {
                     const cardsIndex = Number(reverseSlideCard.dataset.index);
 
-
                     const suits: HTMLElement | null =
                         document.getElementById("suits");
 
-                    if (clickCards) {
+                    if (
+                        clickCards &&
+                        cardsFlipSide[cardsIndex] !=
+                            duplicateCardsArrSort[cardsIndex]
+                    ) {
                         cardsFlipSide[cardsIndex] =
                             duplicateCardsArrSort[cardsIndex];
                         firstIndexCard = cardsIndex;
@@ -99,7 +101,10 @@ export function renderLevelGame(levelGame: number, appEl: HTMLElement | null) {
                         }
 
                         flipsСards();
-                    } else {
+                    } else if (
+                        cardsFlipSide[cardsIndex] !=
+                        duplicateCardsArrSort[cardsIndex]
+                    ) {
                         cardsFlipSide[cardsIndex] =
                             duplicateCardsArrSort[cardsIndex];
 
