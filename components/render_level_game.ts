@@ -74,16 +74,14 @@ export function renderLevelGame(levelGame: number, appEl: HTMLElement | null) {
             suits.innerHTML = `${cardsFlipSide.join("")}`;
         }
 
-        const reverseSlideCards = document.querySelectorAll(
-            ".close",
-        );
+        const reverseSlideCards = document.querySelectorAll(".close");
         const reverseSlideCardsArr = Array.from(reverseSlideCards);
 
         for (const reverseSlideCard of reverseSlideCardsArr) {
             if (reverseSlideCard instanceof HTMLElement) {
                 reverseSlideCard.addEventListener("click", () => {
                     const cardsIndex = Number(reverseSlideCard.dataset.index);
-
+                                 
                     const suits: HTMLElement | null =
                         document.getElementById("suits");
 
@@ -91,6 +89,8 @@ export function renderLevelGame(levelGame: number, appEl: HTMLElement | null) {
                         cardsFlipSide[cardsIndex] =
                             duplicateCardsArrSort[cardsIndex];
                         firstIndexCard = cardsIndex;
+
+                      
 
                         if (suits) {
                             suits.innerHTML = `${cardsFlipSide.join("")}`;
