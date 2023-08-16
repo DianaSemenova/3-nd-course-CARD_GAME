@@ -26,7 +26,7 @@ export function renderLevelGame(levelGame: number, appEl: HTMLElement | null) {
     function getCardsFlipSideArr(levelGame: number) {
         for (let i = 0; i < levelGame; i++) {
             cardsFlipSide.push(
-                `<img id="cards-click" data-index="${i}" class="game-cards__flip-side" src="../static/img/рубашка.png">`,
+                `<img id="cards-click" data-index="${i}" class="game-cards__flip-side close" src="../static/img/рубашка.png">`,
             );
         }
         return cardsFlipSide;
@@ -75,7 +75,7 @@ export function renderLevelGame(levelGame: number, appEl: HTMLElement | null) {
         }
 
         const reverseSlideCards = document.querySelectorAll(
-            ".game-cards__flip-side",
+            ".close",
         );
         const reverseSlideCardsArr = Array.from(reverseSlideCards);
 
@@ -87,11 +87,7 @@ export function renderLevelGame(levelGame: number, appEl: HTMLElement | null) {
                     const suits: HTMLElement | null =
                         document.getElementById("suits");
 
-                    console.log(cardsFlipSide[cardsIndex]);
-                    console.log(duplicateCardsArrSort[cardsIndex]);
-
-                    if (clickCards && cardsFlipSide[cardsIndex] !=
-                        duplicateCardsArrSort[cardsIndex]) {
+                    if (clickCards) {
                         cardsFlipSide[cardsIndex] =
                             duplicateCardsArrSort[cardsIndex];
                         firstIndexCard = cardsIndex;
@@ -101,8 +97,7 @@ export function renderLevelGame(levelGame: number, appEl: HTMLElement | null) {
                         }
 
                         flipsСards();
-                    } else if (cardsFlipSide[cardsIndex] !=
-                        duplicateCardsArrSort[cardsIndex]) {
+                    } else {
                         cardsFlipSide[cardsIndex] =
                             duplicateCardsArrSort[cardsIndex];
 
@@ -165,7 +160,6 @@ export function renderLevelGame(levelGame: number, appEl: HTMLElement | null) {
                 );
                 clearInterval(id);
             }
-
         }
     }
     //  });
