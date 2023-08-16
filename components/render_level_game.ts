@@ -17,16 +17,16 @@ export function renderLevelGame(levelGame: number, appEl: HTMLElement | null) {
     let winGame: boolean = false;
     let id: NodeJS.Timer;
 
-    const cardsFlipSide: Array<string> = [];
     const cardsSuitsArraySort = shuffle(cardsSuitsArr).slice(0, levelGame / 2);
     const duplicateCardsArrSort = shuffle(
         cardsSuitsArraySort.concat(cardsSuitsArraySort),
     );
 
+    const cardsFlipSide: Array<string> = [];
     function getCardsFlipSideArr(levelGame: number) {
         for (let i = 0; i < levelGame; i++) {
             cardsFlipSide.push(
-                `<img id="cards-click" data-index="${i}" class="game-cards__flip-side" src="../static/img/рубашка.png">`,
+                `<img id="cards-click" data-index="${i}" class="game-cards__flip-side close" src="../static/img/рубашка.png">`,
             );
         }
         return cardsFlipSide;
@@ -54,8 +54,8 @@ export function renderLevelGame(levelGame: number, appEl: HTMLElement | null) {
     }, 5000);
 
     let clickCards: boolean = true;
-    let firstIndexCard: number;
-    let secondIndexCard: number;
+    let firstIndexCard: number | null = null;
+    let secondIndexCard: number | null = null;
     let counter: number = levelGame;
 
     const startOverGameButtons: HTMLElement | null =
@@ -75,7 +75,7 @@ export function renderLevelGame(levelGame: number, appEl: HTMLElement | null) {
         }
 
         const reverseSlideCards = document.querySelectorAll(
-            ".game-cards__flip-side",
+            ".close",
         );
         const reverseSlideCardsArr = Array.from(reverseSlideCards);
 
@@ -84,20 +84,14 @@ export function renderLevelGame(levelGame: number, appEl: HTMLElement | null) {
                 reverseSlideCard.addEventListener("click", () => {
                     const cardsIndex = Number(reverseSlideCard.dataset.index);
 
-                    // for (const reverseSlideCard of reverseSlideCardsArr) {
-                    //     reverseSlideCard.addEventListener("click", () => {
-                    //         const cardsIndex = Number(
-                    //             (reverseSlideCard as HTMLElement).dataset.index,
-                    //         );
-
                     const suits: HTMLElement | null =
-                            document.getElementById("suits");
+                        document.getElementById("suits");
 
                     if (clickCards) {
                         cardsFlipSide[cardsIndex] =
                             duplicateCardsArrSort[cardsIndex];
                         firstIndexCard = cardsIndex;
-                    
+
                         if (suits) {
                             suits.innerHTML = `${cardsFlipSide.join("")}`;
                         }
@@ -108,7 +102,7 @@ export function renderLevelGame(levelGame: number, appEl: HTMLElement | null) {
                             duplicateCardsArrSort[cardsIndex];
 
                         secondIndexCard = cardsIndex;
-                        
+
                         if (suits) {
                             suits.innerHTML = `${cardsFlipSide.join("")}`;
                         }
@@ -141,17 +135,31 @@ export function renderLevelGame(levelGame: number, appEl: HTMLElement | null) {
 
     setTimeout(flipsСards, 5000);
 
-    function comparingTwoCard(firstIndexCard: number, secondIndexCard: number) {
-        if (cardsFlipSide[firstIndexCard] === cardsFlipSide[secondIndexCard]) {
-            flipsСards();
-        } else {
-            if (fontGameCards && modalGameHTML) {
-                fontGameCards.style.opacity = ".3";
-                modalGameHTML.style.display = "block";
-            }
+    function comparingTwoCard(
+        firstIndexCard: number | null,
+        secondIndexCard: number | null,
+    ) {
+        if (firstIndexCard != null && secondIndexCard != null) {
+            if (
+                cardsFlipSide[firstIndexCard] === cardsFlipSide[secondIndexCard]
+            ) {
+                firstIndexCard = null;
+                secondIndexCard = null;
+                flipsСards();
+            } else {
+                if (fontGameCards && modalGameHTML) {
+                    fontGameCards.style.opacity = ".3";
+                    modalGameHTML.style.display = "block";
+                }
 
-            getModalWindowGame(winGame, modalGameHTML, currentDate, combDate);
-            clearInterval(id);
+                getModalWindowGame(
+                    winGame,
+                    modalGameHTML,
+                    currentDate,
+                    combDate,
+                );
+                clearInterval(id);
+            }
         }
     }
     //  });
