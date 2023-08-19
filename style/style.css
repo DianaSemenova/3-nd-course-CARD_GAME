@@ -157,7 +157,17 @@ body {
     display: grid;
     grid-template-columns: repeat(6, auto);
     justify-content: center;
-    gap: 15px;
+    gap: 17px;
+    transition: all 0.2s;
+}
+
+.close:hover:hover {
+    transform: scale(-1);
+    border-radius: 12px;
+}
+
+.open {
+    transform: scale(1.1);
 }
 
 .modal {

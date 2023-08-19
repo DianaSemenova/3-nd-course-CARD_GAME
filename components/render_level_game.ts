@@ -74,9 +74,7 @@ export function renderLevelGame(levelGame: number, appEl: HTMLElement | null) {
             suits.innerHTML = `${cardsFlipSide.join("")}`;
         }
 
-        const reverseSlideCards = document.querySelectorAll(
-            ".close",
-        );
+        const reverseSlideCards = document.querySelectorAll(".close");
         const reverseSlideCardsArr = Array.from(reverseSlideCards);
 
         for (const reverseSlideCard of reverseSlideCardsArr) {
